@@ -3,12 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		38F135FA26D3076800E1C41C /* AlbertosApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F135F926D3076800E1C41C /* AlbertosApp.swift */; };
-		38F135FC26D3076800E1C41C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F135FB26D3076800E1C41C /* ContentView.swift */; };
 		38F135FE26D3076900E1C41C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 38F135FD26D3076900E1C41C /* Assets.xcassets */; };
 		38F1360126D3076900E1C41C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 38F1360026D3076900E1C41C /* Preview Assets.xcassets */; };
 		38F1361526D3076900E1C41C /* AlbertosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F1361426D3076900E1C41C /* AlbertosUITests.swift */; };
@@ -16,6 +15,7 @@
 		38F1362426D308DF00E1C41C /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F1362326D308DF00E1C41C /* MenuItem.swift */; };
 		38F1362626D308F500E1C41C /* MenuSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F1362526D308F500E1C41C /* MenuSection.swift */; };
 		38F1362826D3092F00E1C41C /* MenuGrouping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F1362726D3092F00E1C41C /* MenuGrouping.swift */; };
+		38FE9DA126D31A4E00078BE0 /* MenuList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FE9DA026D31A4E00078BE0 /* MenuList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +38,6 @@
 /* Begin PBXFileReference section */
 		38F135F626D3076800E1C41C /* Albertos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Albertos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38F135F926D3076800E1C41C /* AlbertosApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbertosApp.swift; sourceTree = "<group>"; };
-		38F135FB26D3076800E1C41C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		38F135FD26D3076900E1C41C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		38F1360026D3076900E1C41C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		38F1360626D3076900E1C41C /* AlbertosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AlbertosTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -48,6 +47,7 @@
 		38F1362326D308DF00E1C41C /* MenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItem.swift; sourceTree = "<group>"; };
 		38F1362526D308F500E1C41C /* MenuSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuSection.swift; sourceTree = "<group>"; };
 		38F1362726D3092F00E1C41C /* MenuGrouping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuGrouping.swift; sourceTree = "<group>"; };
+		38FE9DA026D31A4E00078BE0 /* MenuList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,9 +99,9 @@
 			isa = PBXGroup;
 			children = (
 				38F135F926D3076800E1C41C /* AlbertosApp.swift */,
-				38F135FB26D3076800E1C41C /* ContentView.swift */,
 				38F1362726D3092F00E1C41C /* MenuGrouping.swift */,
 				38F1362326D308DF00E1C41C /* MenuItem.swift */,
+				38FE9DA026D31A4E00078BE0 /* MenuList.swift */,
 				38F1362526D308F500E1C41C /* MenuSection.swift */,
 				38F135FD26D3076900E1C41C /* Assets.xcassets */,
 				38F135FF26D3076900E1C41C /* Preview Content */,
@@ -215,7 +215,7 @@
 				};
 			};
 			buildConfigurationList = 38F135F126D3076800E1C41C /* Build configuration list for PBXProject "Albertos" */;
-			compatibilityVersion = "Xcode 13.0";
+			compatibilityVersion = "Xcode 12.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -267,8 +267,8 @@
 			files = (
 				38F1362826D3092F00E1C41C /* MenuGrouping.swift in Sources */,
 				38F1362426D308DF00E1C41C /* MenuItem.swift in Sources */,
-				38F135FC26D3076800E1C41C /* ContentView.swift in Sources */,
 				38F1362626D308F500E1C41C /* MenuSection.swift in Sources */,
+				38FE9DA126D31A4E00078BE0 /* MenuList.swift in Sources */,
 				38F135FA26D3076800E1C41C /* AlbertosApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
