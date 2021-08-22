@@ -1,8 +1,5 @@
 //
-//  AlbertosApp.swift
-//  Albertos
-//
-//  Created by Jesús Alfredo Hernández Alarcón on 22/08/21.
+//  Copyright © 2021 Jesús Alfredo Hernández Alarcón. All rights reserved.
 //
 
 import SwiftUI

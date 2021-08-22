@@ -11,8 +11,11 @@
 		38F135FC26D3076800E1C41C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F135FB26D3076800E1C41C /* ContentView.swift */; };
 		38F135FE26D3076900E1C41C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 38F135FD26D3076900E1C41C /* Assets.xcassets */; };
 		38F1360126D3076900E1C41C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 38F1360026D3076900E1C41C /* Preview Assets.xcassets */; };
-		38F1360B26D3076900E1C41C /* AlbertosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F1360A26D3076900E1C41C /* AlbertosTests.swift */; };
 		38F1361526D3076900E1C41C /* AlbertosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F1361426D3076900E1C41C /* AlbertosUITests.swift */; };
+		38F1362226D307AB00E1C41C /* MenuGroupingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F1362126D307AB00E1C41C /* MenuGroupingTests.swift */; };
+		38F1362426D308DF00E1C41C /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F1362326D308DF00E1C41C /* MenuItem.swift */; };
+		38F1362626D308F500E1C41C /* MenuSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F1362526D308F500E1C41C /* MenuSection.swift */; };
+		38F1362826D3092F00E1C41C /* MenuGrouping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F1362726D3092F00E1C41C /* MenuGrouping.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,9 +42,12 @@
 		38F135FD26D3076900E1C41C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		38F1360026D3076900E1C41C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		38F1360626D3076900E1C41C /* AlbertosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AlbertosTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		38F1360A26D3076900E1C41C /* AlbertosTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbertosTests.swift; sourceTree = "<group>"; };
 		38F1361026D3076900E1C41C /* AlbertosUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AlbertosUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		38F1361426D3076900E1C41C /* AlbertosUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbertosUITests.swift; sourceTree = "<group>"; };
+		38F1362126D307AB00E1C41C /* MenuGroupingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuGroupingTests.swift; sourceTree = "<group>"; };
+		38F1362326D308DF00E1C41C /* MenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItem.swift; sourceTree = "<group>"; };
+		38F1362526D308F500E1C41C /* MenuSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuSection.swift; sourceTree = "<group>"; };
+		38F1362726D3092F00E1C41C /* MenuGrouping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuGrouping.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +100,9 @@
 			children = (
 				38F135F926D3076800E1C41C /* AlbertosApp.swift */,
 				38F135FB26D3076800E1C41C /* ContentView.swift */,
+				38F1362726D3092F00E1C41C /* MenuGrouping.swift */,
+				38F1362326D308DF00E1C41C /* MenuItem.swift */,
+				38F1362526D308F500E1C41C /* MenuSection.swift */,
 				38F135FD26D3076900E1C41C /* Assets.xcassets */,
 				38F135FF26D3076900E1C41C /* Preview Content */,
 			);
@@ -111,7 +120,7 @@
 		38F1360926D3076900E1C41C /* AlbertosTests */ = {
 			isa = PBXGroup;
 			children = (
-				38F1360A26D3076900E1C41C /* AlbertosTests.swift */,
+				38F1362126D307AB00E1C41C /* MenuGroupingTests.swift */,
 			);
 			path = AlbertosTests;
 			sourceTree = "<group>";
@@ -189,12 +198,14 @@
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1300;
 				LastUpgradeCheck = 1300;
+				ORGANIZATIONNAME = "Kraken Vault";
 				TargetAttributes = {
 					38F135F526D3076800E1C41C = {
 						CreatedOnToolsVersion = 13.0;
 					};
 					38F1360526D3076900E1C41C = {
 						CreatedOnToolsVersion = 13.0;
+						LastSwiftMigration = 1300;
 						TestTargetID = 38F135F526D3076800E1C41C;
 					};
 					38F1360F26D3076900E1C41C = {
@@ -254,7 +265,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38F1362826D3092F00E1C41C /* MenuGrouping.swift in Sources */,
+				38F1362426D308DF00E1C41C /* MenuItem.swift in Sources */,
 				38F135FC26D3076800E1C41C /* ContentView.swift in Sources */,
+				38F1362626D308F500E1C41C /* MenuSection.swift in Sources */,
 				38F135FA26D3076800E1C41C /* AlbertosApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -263,7 +277,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				38F1360B26D3076900E1C41C /* AlbertosTests.swift in Sources */,
+				38F1362226D307AB00E1C41C /* MenuGroupingTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -472,6 +486,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = HS399QXLRD;
@@ -486,6 +501,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.alfredohdz.tdd.AlbertosTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Albertos.app/Albertos";
@@ -497,6 +513,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = HS399QXLRD;
