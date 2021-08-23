@@ -17,12 +17,12 @@ struct AlbertosApp: App {
 }
 
 let menu = [
-    MenuItem(category: "starters", name: "Caprese Salad", spicy: false),
-    MenuItem(category: "starters", name: "Arancini Balls", spicy: false),
-    MenuItem(category: "pastas", name: "Penne all'Arrabbiata", spicy: false),
-    MenuItem(category: "pastas", name: "Spaghetti Carbonara", spicy: false),
-    MenuItem(category: "drinks", name: "Water", spicy: false),
-    MenuItem(category: "drinks", name: "Red Wine", spicy: false),
-    MenuItem(category: "desserts", name: "Tiramisù", spicy: false),
-    MenuItem(category: "desserts", name: "Crema Catalana", spicy: false),
+    MenuItem(category: "starters", name: "Caprese Salad", spicy: false, price: 0.0),
+    MenuItem(category: "starters", name: "Arancini Balls", spicy: false, price: 0.0),
+    MenuItem(category: "pastas", name: "Penne all'Arrabbiata", spicy: false, price: 0.0),
+    MenuItem(category: "pastas", name: "Spaghetti Carbonara", spicy: false, price: 0.0),
+    MenuItem(category: "drinks", name: "Water", spicy: false, price: 0.0),
+    MenuItem(category: "drinks", name: "Red Wine", spicy: false, price: 0.0),
+    MenuItem(category: "desserts", name: "Tiramisù", spicy: false, price: 0.0),
+    MenuItem(category: "desserts", name: "Crema Catalana", spicy: false, price: 0.0),
 ]
