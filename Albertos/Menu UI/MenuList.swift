@@ -5,17 +5,23 @@
 import SwiftUI
 
 struct MenuList: View {
-    let viewModel: MenuListViewModel
+    @ObservedObject var viewModel: MenuListViewModel
 
     var body: some View {
-        List {
-            ForEach(viewModel.sections) { section in
-                Section(header: Text(section.category)) {
-                    ForEach(section.items) { item in
-                        MenuRow(item: .init(item: item))
+        switch viewModel.sections {
+        case let .success(menuSections):
+            List {
+                ForEach(menuSections) { section in
+                    Section(header: Text(section.category)) {
+                        ForEach(section.items) { item in
+                            MenuRow(item: .init(item: item))
+                        }
                     }
                 }
             }
+        case let .failure(error):
+            Text("An error occurred: ")
+            Text(error.localizedDescription).italic()
         }
     }
 }

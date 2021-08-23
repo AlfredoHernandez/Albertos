@@ -2,6 +2,7 @@
 //  Copyright © 2021 Jesús Alfredo Hernández Alarcón. All rights reserved.
 //
 
+import Combine
 import SwiftUI
 
 @main
@@ -9,7 +10,7 @@ struct AlbertosApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationView {
-                MenuList(viewModel: .init(menu: menu))
+                MenuList(viewModel: .init(menuFetcher: MenuFetcherPlaceholder()))
                     .navigationTitle("Alberto's 🇮🇹")
             }
         }
@@ -26,3 +27,13 @@ let menu = [
     MenuItem(category: "desserts", name: "Tiramisù", spicy: false, price: 0.0),
     MenuItem(category: "desserts", name: "Crema Catalana", spicy: false, price: 0.0),
 ]
+
+class MenuFetcherPlaceholder: MenuFetching {
+    func fetchMenu() -> AnyPublisher<[MenuItem], Error> {
+        Future { completion in
+            completion(.success(menu))
+        }
+        // .delay(for: 0.5, scheduler: RunLoop.main)
+        .eraseToAnyPublisher()
+    }
+}
