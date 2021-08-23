@@ -5,9 +5,9 @@
 import SwiftUI
 
 struct MenuRow: View {
-    let item: MenuItem
+    let item: MenuRowViewModel
 
     var body: some View {
-        Text(item.name)
+        Text(item.text)
     }
 }

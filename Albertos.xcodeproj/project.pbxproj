@@ -109,13 +109,11 @@
 			isa = PBXGroup;
 			children = (
 				38F135F926D3076800E1C41C /* AlbertosApp.swift */,
-				38F1362726D3092F00E1C41C /* MenuGrouping.swift */,
-				38F1362326D308DF00E1C41C /* MenuItem.swift */,
-				38F1362526D308F500E1C41C /* MenuSection.swift */,
 				38F135FD26D3076900E1C41C /* Assets.xcassets */,
-				38FE9DAD26D329A400078BE0 /* Presentation */,
+				38FE9DB126D32B6700078BE0 /* Menu Domain */,
+				38FE9DAD26D329A400078BE0 /* Menu Presentation */,
+				38FE9DB026D32B2100078BE0 /* Menu UI */,
 				38F135FF26D3076900E1C41C /* Preview Content */,
-				38FE9DA826D3284200078BE0 /* Views */,
 			);
 			path = Albertos;
 			sourceTree = "<group>";
@@ -155,21 +153,31 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
-		38FE9DA826D3284200078BE0 /* Views */ = {
+		38FE9DAD26D329A400078BE0 /* Menu Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				38FE9DAE26D329B400078BE0 /* MenuRowViewModel.swift */,
+			);
+			path = "Menu Presentation";
+			sourceTree = "<group>";
+		};
+		38FE9DB026D32B2100078BE0 /* Menu UI */ = {
 			isa = PBXGroup;
 			children = (
 				38FE9DA026D31A4E00078BE0 /* MenuList.swift */,
 				38FE9DA926D3285700078BE0 /* MenuRow.swift */,
 			);
-			path = Views;
+			path = "Menu UI";
 			sourceTree = "<group>";
 		};
-		38FE9DAD26D329A400078BE0 /* Presentation */ = {
+		38FE9DB126D32B6700078BE0 /* Menu Domain */ = {
 			isa = PBXGroup;
 			children = (
-				38FE9DAE26D329B400078BE0 /* MenuRowViewModel.swift */,
+				38F1362726D3092F00E1C41C /* MenuGrouping.swift */,
+				38F1362326D308DF00E1C41C /* MenuItem.swift */,
+				38F1362526D308F500E1C41C /* MenuSection.swift */,
 			);
-			path = Presentation;
+			path = "Menu Domain";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

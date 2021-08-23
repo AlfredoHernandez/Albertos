@@ -19,7 +19,7 @@ struct AlbertosApp: App {
 let menu = [
     MenuItem(category: "starters", name: "Caprese Salad", spicy: false, price: 0.0),
     MenuItem(category: "starters", name: "Arancini Balls", spicy: false, price: 0.0),
-    MenuItem(category: "pastas", name: "Penne all'Arrabbiata", spicy: false, price: 0.0),
+    MenuItem(category: "pastas", name: "Penne all'Arrabbiata", spicy: true, price: 0.0),
     MenuItem(category: "pastas", name: "Spaghetti Carbonara", spicy: false, price: 0.0),
     MenuItem(category: "drinks", name: "Water", spicy: false, price: 0.0),
     MenuItem(category: "drinks", name: "Red Wine", spicy: false, price: 0.0),
