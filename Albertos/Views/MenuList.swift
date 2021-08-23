@@ -12,7 +12,7 @@ struct MenuList: View {
             ForEach(sections) { section in
                 Section(header: Text(section.category)) {
                     ForEach(section.items) { item in
-                        Text(item.name)
+                        MenuRow(item: item)
                     }
                 }
             }
