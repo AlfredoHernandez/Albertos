@@ -130,8 +130,8 @@
 			isa = PBXGroup;
 			children = (
 				38FE9DA226D31CC100078BE0 /* Helpers */,
-				38F1362126D307AB00E1C41C /* MenuGroupingTests.swift */,
-				38FE9DAB26D328FF00078BE0 /* MenuRowViewModelTests.swift */,
+				38FE9DB326D3315600078BE0 /* Menu Domain */,
+				38FE9DB226D3314000078BE0 /* Menu Presentation */,
 			);
 			path = AlbertosTests;
 			sourceTree = "<group>";
@@ -176,6 +176,22 @@
 				38F1362726D3092F00E1C41C /* MenuGrouping.swift */,
 				38F1362326D308DF00E1C41C /* MenuItem.swift */,
 				38F1362526D308F500E1C41C /* MenuSection.swift */,
+			);
+			path = "Menu Domain";
+			sourceTree = "<group>";
+		};
+		38FE9DB226D3314000078BE0 /* Menu Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				38FE9DAB26D328FF00078BE0 /* MenuRowViewModelTests.swift */,
+			);
+			path = "Menu Presentation";
+			sourceTree = "<group>";
+		};
+		38FE9DB326D3315600078BE0 /* Menu Domain */ = {
+			isa = PBXGroup;
+			children = (
+				38F1362126D307AB00E1C41C /* MenuGroupingTests.swift */,
 			);
 			path = "Menu Domain";
 			sourceTree = "<group>";
