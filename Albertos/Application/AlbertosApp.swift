@@ -9,9 +9,13 @@ import SwiftUI
 struct AlbertosApp: App {
     var body: some Scene {
         WindowGroup {
-            NavigationView {
-                MenuList(viewModel: .init(menuFetcher: MenuFetcher()))
-                    .navigationTitle("Alberto's 🇮🇹")
+            ZStack(alignment: .bottom) {
+                NavigationView {
+                    MenuList(viewModel: .init(menuFetcher: MenuFetcher()))
+                        .navigationTitle("Alberto's 🇮🇹")
+                }
+                OrderButton(viewModel: .init())
+                    .padding(6)
             }
         }
     }

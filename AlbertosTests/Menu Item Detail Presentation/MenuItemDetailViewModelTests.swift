@@ -6,25 +6,25 @@
 import XCTest
 
 class MenuItemDetailViewModelTests: XCTestCase {
-    func testNameIsItemName() {
+    func test_nameIsItemName() {
         XCTAssertEqual(
             MenuItemDetailViewModel(item: .fixture(name: "a name")).name,
             "a name"
         )
     }
 
-    func testWhenItemIsSpicyShowsSpicyMessage() {
+    func test_whenItemIsSpicy_showsSpicyMessage() {
         XCTAssertEqual(
             MenuItemDetailViewModel(item: .fixture(spicy: true)).spicy,
             "Spicy"
         )
     }
 
-    func testWhenItemIsNotSpicyDoesNotShowSpicyMessage() {
+    func test_whenItemIsNotSpicy_doesNotShowSpicyMessage() {
         XCTAssertNil(MenuItemDetailViewModel(item: .fixture(spicy: false)).spicy)
     }
 
-    func testPriceIsFormattedItemPrice() {
+    func test_price_isFormattedItemPrice() {
         XCTAssertEqual(
             MenuItemDetailViewModel(item: .fixture(price: 1.0)).price,
             "$1.00"
