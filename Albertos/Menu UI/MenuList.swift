@@ -14,7 +14,9 @@ struct MenuList: View {
                 ForEach(menuSections) { section in
                     Section(header: Text(section.category)) {
                         ForEach(section.items) { item in
-                            MenuRow(item: .init(item: item))
+                            NavigationLink(destination: MenuItemDetail(viewModel: .init(item: item))) {
+                                MenuRow(viewModel: .init(item: item))
+                            }
                         }
                     }
                 }
