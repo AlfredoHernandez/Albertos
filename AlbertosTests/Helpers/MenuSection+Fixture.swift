@@ -5,7 +5,7 @@
 @testable import Albertos
 
 extension MenuSection {
-    static func fixture(category: String, items: [MenuItem] = [.fixture()]) -> Self {
+    static func fixture(category: String = "any category", items: [MenuItem] = [.fixture()]) -> Self {
         MenuSection(category: category, items: items)
     }
 }
