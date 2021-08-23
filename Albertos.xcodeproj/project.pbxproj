@@ -15,6 +15,10 @@
 		38D3A85A26D41637009F4511 /* MenuFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D3A85926D41637009F4511 /* MenuFetcher.swift */; };
 		38D3A85C26D4164E009F4511 /* MenuFetching.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D3A85B26D4164E009F4511 /* MenuFetching.swift */; };
 		38D3A85E26D41E23009F4511 /* NetworkFetchingStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D3A85D26D41E23009F4511 /* NetworkFetchingStub.swift */; };
+		38D3A86126D42382009F4511 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D3A86026D42382009F4511 /* Order.swift */; };
+		38D3A86426D4239D009F4511 /* OrderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D3A86326D4239D009F4511 /* OrderController.swift */; };
+		38D3A86726D423DA009F4511 /* OrderControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D3A86626D423DA009F4511 /* OrderControllerTests.swift */; };
+		38D3A86A26D42418009F4511 /* OrderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D3A86926D42418009F4511 /* OrderTests.swift */; };
 		38F135FA26D3076800E1C41C /* AlbertosApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F135F926D3076800E1C41C /* AlbertosApp.swift */; };
 		38F135FE26D3076900E1C41C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 38F135FD26D3076900E1C41C /* Assets.xcassets */; };
 		38F1360126D3076900E1C41C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 38F1360026D3076900E1C41C /* Preview Assets.xcassets */; };
@@ -60,6 +64,10 @@
 		38D3A85926D41637009F4511 /* MenuFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuFetcher.swift; sourceTree = "<group>"; };
 		38D3A85B26D4164E009F4511 /* MenuFetching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuFetching.swift; sourceTree = "<group>"; };
 		38D3A85D26D41E23009F4511 /* NetworkFetchingStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkFetchingStub.swift; sourceTree = "<group>"; };
+		38D3A86026D42382009F4511 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
+		38D3A86326D4239D009F4511 /* OrderController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderController.swift; sourceTree = "<group>"; };
+		38D3A86626D423DA009F4511 /* OrderControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderControllerTests.swift; sourceTree = "<group>"; };
+		38D3A86926D42418009F4511 /* OrderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderTests.swift; sourceTree = "<group>"; };
 		38F135F626D3076800E1C41C /* Albertos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Albertos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38F135F926D3076800E1C41C /* AlbertosApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbertosApp.swift; sourceTree = "<group>"; };
 		38F135FD26D3076900E1C41C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -134,6 +142,38 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		38D3A85F26D42378009F4511 /* Order Feature */ = {
+			isa = PBXGroup;
+			children = (
+				38D3A86026D42382009F4511 /* Order.swift */,
+			);
+			path = "Order Feature";
+			sourceTree = "<group>";
+		};
+		38D3A86226D42395009F4511 /* Order Domain */ = {
+			isa = PBXGroup;
+			children = (
+				38D3A86326D4239D009F4511 /* OrderController.swift */,
+			);
+			path = "Order Domain";
+			sourceTree = "<group>";
+		};
+		38D3A86526D423C6009F4511 /* Order Domain */ = {
+			isa = PBXGroup;
+			children = (
+				38D3A86626D423DA009F4511 /* OrderControllerTests.swift */,
+			);
+			path = "Order Domain";
+			sourceTree = "<group>";
+		};
+		38D3A86826D4240F009F4511 /* Order Feature */ = {
+			isa = PBXGroup;
+			children = (
+				38D3A86926D42418009F4511 /* OrderTests.swift */,
+			);
+			path = "Order Feature";
+			sourceTree = "<group>";
+		};
 		38F135ED26D3076800E1C41C = {
 			isa = PBXGroup;
 			children = (
@@ -159,10 +199,12 @@
 			children = (
 				38F135F926D3076800E1C41C /* AlbertosApp.swift */,
 				38F135FD26D3076900E1C41C /* Assets.xcassets */,
-				381570F926D40B9300BCBB5A /* Menu Feature */,
 				38FE9DB126D32B6700078BE0 /* Menu Domain */,
+				381570F926D40B9300BCBB5A /* Menu Feature */,
 				38FE9DAD26D329A400078BE0 /* Menu Presentation */,
 				38FE9DB026D32B2100078BE0 /* Menu UI */,
+				38D3A85F26D42378009F4511 /* Order Feature */,
+				38D3A86226D42395009F4511 /* Order Domain */,
 				38F135FF26D3076900E1C41C /* Preview Content */,
 			);
 			path = Albertos;
@@ -182,6 +224,8 @@
 				38FE9DA226D31CC100078BE0 /* Helpers */,
 				38FE9DB326D3315600078BE0 /* Menu Domain */,
 				38FE9DB226D3314000078BE0 /* Menu Presentation */,
+				38D3A86826D4240F009F4511 /* Order Feature */,
+				38D3A86526D423C6009F4511 /* Order Domain */,
 			);
 			path = AlbertosTests;
 			sourceTree = "<group>";
@@ -385,10 +429,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38D3A86426D4239D009F4511 /* OrderController.swift in Sources */,
 				38D3A85A26D41637009F4511 /* MenuFetcher.swift in Sources */,
 				38F1362826D3092F00E1C41C /* MenuGrouping.swift in Sources */,
 				38D3A85C26D4164E009F4511 /* MenuFetching.swift in Sources */,
 				38F1362426D308DF00E1C41C /* MenuItem.swift in Sources */,
+				38D3A86126D42382009F4511 /* Order.swift in Sources */,
 				38F1362626D308F500E1C41C /* MenuSection.swift in Sources */,
 				38FE9DA126D31A4E00078BE0 /* MenuList.swift in Sources */,
 				38FE9DAF26D329B400078BE0 /* MenuRowViewModel.swift in Sources */,
@@ -402,10 +448,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38D3A86A26D42418009F4511 /* OrderTests.swift in Sources */,
 				38F1362226D307AB00E1C41C /* MenuGroupingTests.swift in Sources */,
 				381570FE26D40D5600BCBB5A /* MenuItem+JSONFixture.swift in Sources */,
 				381570FB26D40C1000BCBB5A /* MenuItemsTests.swift in Sources */,
 				38FE9DB926D3355600078BE0 /* XCTestCase+MemoryLeaksTracking.swift in Sources */,
+				38D3A86726D423DA009F4511 /* OrderControllerTests.swift in Sources */,
 				38D3A85E26D41E23009F4511 /* NetworkFetchingStub.swift in Sources */,
 				38FE9DA626D31EB700078BE0 /* MenuSection+Fixture.swift in Sources */,
 				38FE9DAC26D328FF00078BE0 /* MenuRowViewModelTests.swift in Sources */,
