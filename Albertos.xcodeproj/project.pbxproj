@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		381570F526D403E100BCBB5A /* MenuFetchingStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381570F426D403E100BCBB5A /* MenuFetchingStub.swift */; };
 		381570F726D407B900BCBB5A /* TestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381570F626D407B900BCBB5A /* TestError.swift */; };
+		381570FB26D40C1000BCBB5A /* MenuItemsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381570FA26D40C1000BCBB5A /* MenuItemsTests.swift */; };
+		381570FE26D40D5600BCBB5A /* MenuItem+JSONFixture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381570FD26D40D5600BCBB5A /* MenuItem+JSONFixture.swift */; };
 		38F135FA26D3076800E1C41C /* AlbertosApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F135F926D3076800E1C41C /* AlbertosApp.swift */; };
 		38F135FE26D3076900E1C41C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 38F135FD26D3076900E1C41C /* Assets.xcassets */; };
 		38F1360126D3076900E1C41C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 38F1360026D3076900E1C41C /* Preview Assets.xcassets */; };
@@ -48,6 +50,8 @@
 /* Begin PBXFileReference section */
 		381570F426D403E100BCBB5A /* MenuFetchingStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuFetchingStub.swift; sourceTree = "<group>"; };
 		381570F626D407B900BCBB5A /* TestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestError.swift; sourceTree = "<group>"; };
+		381570FA26D40C1000BCBB5A /* MenuItemsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemsTests.swift; sourceTree = "<group>"; };
+		381570FD26D40D5600BCBB5A /* MenuItem+JSONFixture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MenuItem+JSONFixture.swift"; sourceTree = "<group>"; };
 		38F135F626D3076800E1C41C /* Albertos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Albertos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38F135F926D3076800E1C41C /* AlbertosApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbertosApp.swift; sourceTree = "<group>"; };
 		38F135FD26D3076900E1C41C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -110,6 +114,14 @@
 				38F1362526D308F500E1C41C /* MenuSection.swift */,
 			);
 			path = "Menu Feature";
+			sourceTree = "<group>";
+		};
+		381570FC26D40D4B00BCBB5A /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				381570FD26D40D5600BCBB5A /* MenuItem+JSONFixture.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		38F135ED26D3076800E1C41C = {
@@ -222,7 +234,9 @@
 		38FE9DB326D3315600078BE0 /* Menu Domain */ = {
 			isa = PBXGroup;
 			children = (
+				381570FC26D40D4B00BCBB5A /* Helpers */,
 				38F1362126D307AB00E1C41C /* MenuGroupingTests.swift */,
+				381570FA26D40C1000BCBB5A /* MenuItemsTests.swift */,
 			);
 			path = "Menu Domain";
 			sourceTree = "<group>";
@@ -375,6 +389,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				38F1362226D307AB00E1C41C /* MenuGroupingTests.swift in Sources */,
+				381570FE26D40D5600BCBB5A /* MenuItem+JSONFixture.swift in Sources */,
+				381570FB26D40C1000BCBB5A /* MenuItemsTests.swift in Sources */,
 				38FE9DB926D3355600078BE0 /* XCTestCase+MemoryLeaksTracking.swift in Sources */,
 				38FE9DA626D31EB700078BE0 /* MenuSection+Fixture.swift in Sources */,
 				38FE9DAC26D328FF00078BE0 /* MenuRowViewModelTests.swift in Sources */,
