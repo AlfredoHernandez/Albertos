@@ -5,10 +5,6 @@
 import Combine
 import Foundation
 
-protocol MenuFetching {
-    func fetchMenu() -> AnyPublisher<[MenuItem], Error>
-}
-
 class MenuListViewModel: ObservableObject {
     @Published private(set) var sections: Result<[MenuSection], Error> = .success([])
 

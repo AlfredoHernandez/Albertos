@@ -6,15 +6,13 @@
 import Foundation
 
 extension MenuItem {
-    static func jsonFixture(name: String = "any name", category: String = "any category", spicy: Bool = false) -> String {
+    static func jsonFixture(name: String = "any name", category: String = "any category", spicy: Bool = false, price: Double = 0.0) -> String {
         """
         {
             "name": "\(name)",
-            "category": {
-                "name": "\(category)",
-                "id": 123
-            },
-        "spicy": \(spicy)
+            "category": "\(category)",
+            "spicy": \(spicy),
+            "price": \(price)
         }
         """
     }
