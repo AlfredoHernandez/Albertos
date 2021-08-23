@@ -95,6 +95,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		381570F826D40B6400BCBB5A /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				381570F426D403E100BCBB5A /* MenuFetchingStub.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		381570F926D40B9300BCBB5A /* Menu Feature */ = {
+			isa = PBXGroup;
+			children = (
+				38F1362326D308DF00E1C41C /* MenuItem.swift */,
+				38F1362526D308F500E1C41C /* MenuSection.swift */,
+			);
+			path = "Menu Feature";
+			sourceTree = "<group>";
+		};
 		38F135ED26D3076800E1C41C = {
 			isa = PBXGroup;
 			children = (
@@ -120,6 +137,7 @@
 			children = (
 				38F135F926D3076800E1C41C /* AlbertosApp.swift */,
 				38F135FD26D3076900E1C41C /* Assets.xcassets */,
+				381570F926D40B9300BCBB5A /* Menu Feature */,
 				38FE9DB126D32B6700078BE0 /* Menu Domain */,
 				38FE9DAD26D329A400078BE0 /* Menu Presentation */,
 				38FE9DB026D32B2100078BE0 /* Menu UI */,
@@ -187,8 +205,6 @@
 			isa = PBXGroup;
 			children = (
 				38F1362726D3092F00E1C41C /* MenuGrouping.swift */,
-				38F1362326D308DF00E1C41C /* MenuItem.swift */,
-				38F1362526D308F500E1C41C /* MenuSection.swift */,
 			);
 			path = "Menu Domain";
 			sourceTree = "<group>";
@@ -196,7 +212,7 @@
 		38FE9DB226D3314000078BE0 /* Menu Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				381570F426D403E100BCBB5A /* MenuFetchingStub.swift */,
+				381570F826D40B6400BCBB5A /* Helpers */,
 				38FE9DB426D3319A00078BE0 /* MenuListViewModelTests.swift */,
 				38FE9DAB26D328FF00078BE0 /* MenuRowViewModelTests.swift */,
 			);
