@@ -17,10 +17,12 @@ class OrderDetailViewModel: ObservableObject {
     let orderController: OrderController
     let shouldShowCheckoutButton: Bool
     @Published var alertToShow: AlertViewModel?
+    private let onAlertDismiss: () -> Void
 
-    init(orderController: OrderController, paymentProcessor: PaymentProcessing) {
+    init(orderController: OrderController, paymentProcessor: PaymentProcessing, onAlertDismiss: @escaping () -> Void) {
         self.orderController = orderController
         self.paymentProcessor = paymentProcessor
+        self.onAlertDismiss = onAlertDismiss
 
         if orderController.order.items.isEmpty {
             totalAmmount = .none
@@ -40,13 +42,15 @@ class OrderDetailViewModel: ObservableObject {
                 self?.alertToShow = AlertViewModel(
                     title: "",
                     message: "There's been an error with your order. Please contact a waiter.",
-                    buttonText: "Ok"
+                    buttonText: "Ok",
+                    buttonAction: self?.onAlertDismiss
                 )
             }, receiveValue: { [weak self] _ in
                 self?.alertToShow = AlertViewModel(
                     title: "",
                     message: "The payment was successful. Your food will be with you shortly.",
-                    buttonText: "Ok"
+                    buttonText: "Ok",
+                    buttonAction: self?.onAlertDismiss
                 )
             })
             .store(in: &cancellables)

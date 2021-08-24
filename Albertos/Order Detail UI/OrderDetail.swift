@@ -33,7 +33,11 @@ struct OrderDetail: View {
             Spacer()
         }
         .alert(item: $viewModel.alertToShow) { alertViewModel in
-            Alert(title: Text(alertViewModel.title), message: Text(alertViewModel.message), dismissButton: .default(Text(alertViewModel.buttonText)))
+            Alert(
+                title: Text(alertViewModel.title),
+                message: Text(alertViewModel.message),
+                dismissButton: .default(Text(alertViewModel.buttonText), action: alertViewModel.buttonAction)
+            )
         }
         .padding(8)
     }
