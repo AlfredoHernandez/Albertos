@@ -9,9 +9,15 @@ import XCTest
 
 class OrderDetailViewModelTests: XCTestCase {
     func test_headerText() {
-        let viewModel = OrderDetailViewModel()
+        let viewModel = OrderDetailViewModel(orderController: OrderController())
 
         XCTAssertEqual(viewModel.headerText, "Your Order")
+    }
+
+    func test_emptyMenuFallbackText() {
+        let viewModel = OrderDetailViewModel(orderController: OrderController())
+
+        XCTAssertEqual(viewModel.emptyMenuFallbackText, "Add dishes to the order to see them here")
     }
 
     func test_whenOrderIsEmpty_shouldNotShowTotalAmount() {
