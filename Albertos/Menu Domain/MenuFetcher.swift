@@ -17,7 +17,7 @@ class MenuFetcher: MenuFetching {
     }
 
     func fetchMenu() -> AnyPublisher<[MenuItem], Error> {
-        let url = URL(string: "https://raw.githubusercontent.com/mokagio/tddinswift_fake_api/trunk/menu_response.json")!
+        let url = URL(string: "https://s3.amazonaws.com/mokacoding/menu_response.json")!
         return networkFetching
             .load(URLRequest(url: url))
             .decode(type: [MenuItem].self, decoder: JSONDecoder())
