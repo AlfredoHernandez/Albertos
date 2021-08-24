@@ -18,6 +18,10 @@
 		386D7D2326D5767400005318 /* HippoPaymentsError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386D7D2226D5767400005318 /* HippoPaymentsError.swift */; };
 		386D7D2526D5767E00005318 /* HippoPaymentsProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386D7D2426D5767E00005318 /* HippoPaymentsProcessor.swift */; };
 		386D7D2726D5769100005318 /* UIViewController+Presentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386D7D2626D5769100005318 /* UIViewController+Presentation.swift */; };
+		386D7D3026D5772A00005318 /* HippoAnalytics.h in Headers */ = {isa = PBXBuildFile; fileRef = 386D7D2F26D5772A00005318 /* HippoAnalytics.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		386D7D3326D5772A00005318 /* HippoAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 386D7D2D26D5772A00005318 /* HippoAnalytics.framework */; };
+		386D7D3426D5772A00005318 /* HippoAnalytics.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 386D7D2D26D5772A00005318 /* HippoAnalytics.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		386D7D3926D5773200005318 /* HippoAnalyticsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386D7D3826D5773200005318 /* HippoAnalyticsClient.swift */; };
 		38D3A85826D415A9009F4511 /* MenuFetcherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D3A85726D415A9009F4511 /* MenuFetcherTests.swift */; };
 		38D3A85A26D41637009F4511 /* MenuFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D3A85926D41637009F4511 /* MenuFetcher.swift */; };
 		38D3A85C26D4164E009F4511 /* MenuFetching.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D3A85B26D4164E009F4511 /* MenuFetching.swift */; };
@@ -63,6 +67,13 @@
 			remoteGlobalIDString = 386D7D1326D5765B00005318;
 			remoteInfo = HippoPayments;
 		};
+		386D7D3126D5772A00005318 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 38F135EE26D3076800E1C41C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 386D7D2C26D5772A00005318;
+			remoteInfo = HippoAnalytics;
+		};
 		38F1360726D3076900E1C41C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 38F135EE26D3076800E1C41C /* Project object */;
@@ -86,6 +97,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				386D7D3426D5772A00005318 /* HippoAnalytics.framework in Embed Frameworks */,
 				386D7D1B26D5765B00005318 /* HippoPayments.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -104,6 +116,9 @@
 		386D7D2226D5767400005318 /* HippoPaymentsError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HippoPaymentsError.swift; sourceTree = "<group>"; };
 		386D7D2426D5767E00005318 /* HippoPaymentsProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HippoPaymentsProcessor.swift; sourceTree = "<group>"; };
 		386D7D2626D5769100005318 /* UIViewController+Presentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Presentation.swift"; sourceTree = "<group>"; };
+		386D7D2D26D5772A00005318 /* HippoAnalytics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HippoAnalytics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		386D7D2F26D5772A00005318 /* HippoAnalytics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HippoAnalytics.h; sourceTree = "<group>"; };
+		386D7D3826D5773200005318 /* HippoAnalyticsClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HippoAnalyticsClient.swift; sourceTree = "<group>"; };
 		38D3A85726D415A9009F4511 /* MenuFetcherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuFetcherTests.swift; sourceTree = "<group>"; };
 		38D3A85926D41637009F4511 /* MenuFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuFetcher.swift; sourceTree = "<group>"; };
 		38D3A85B26D4164E009F4511 /* MenuFetching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuFetching.swift; sourceTree = "<group>"; };
@@ -152,10 +167,18 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		386D7D2A26D5772A00005318 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		38F135F326D3076800E1C41C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				386D7D3326D5772A00005318 /* HippoAnalytics.framework in Frameworks */,
 				386D7D1A26D5765B00005318 /* HippoPayments.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -214,6 +237,15 @@
 				386D7D2626D5769100005318 /* UIViewController+Presentation.swift */,
 			);
 			path = HippoPayments;
+			sourceTree = "<group>";
+		};
+		386D7D2E26D5772A00005318 /* HippoAnalytics */ = {
+			isa = PBXGroup;
+			children = (
+				386D7D2F26D5772A00005318 /* HippoAnalytics.h */,
+				386D7D3826D5773200005318 /* HippoAnalyticsClient.swift */,
+			);
+			path = HippoAnalytics;
 			sourceTree = "<group>";
 		};
 		38D3A85F26D42378009F4511 /* Order Feature */ = {
@@ -336,6 +368,7 @@
 				38F1360926D3076900E1C41C /* AlbertosTests */,
 				38F1361326D3076900E1C41C /* AlbertosUITests */,
 				386D7D1526D5765B00005318 /* HippoPayments */,
+				386D7D2E26D5772A00005318 /* HippoAnalytics */,
 				38F135F726D3076800E1C41C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -347,6 +380,7 @@
 				38F1360626D3076900E1C41C /* AlbertosTests.xctest */,
 				38F1361026D3076900E1C41C /* AlbertosUITests.xctest */,
 				386D7D1426D5765B00005318 /* HippoPayments.framework */,
+				386D7D2D26D5772A00005318 /* HippoAnalytics.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -474,6 +508,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		386D7D2826D5772A00005318 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				386D7D3026D5772A00005318 /* HippoAnalytics.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
@@ -495,6 +537,24 @@
 			productReference = 386D7D1426D5765B00005318 /* HippoPayments.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		386D7D2C26D5772A00005318 /* HippoAnalytics */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 386D7D3526D5772A00005318 /* Build configuration list for PBXNativeTarget "HippoAnalytics" */;
+			buildPhases = (
+				386D7D2826D5772A00005318 /* Headers */,
+				386D7D2926D5772A00005318 /* Sources */,
+				386D7D2A26D5772A00005318 /* Frameworks */,
+				386D7D2B26D5772A00005318 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HippoAnalytics;
+			productName = HippoAnalytics;
+			productReference = 386D7D2D26D5772A00005318 /* HippoAnalytics.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		38F135F526D3076800E1C41C /* Albertos */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 38F1361826D3076900E1C41C /* Build configuration list for PBXNativeTarget "Albertos" */;
@@ -508,6 +568,7 @@
 			);
 			dependencies = (
 				386D7D1926D5765B00005318 /* PBXTargetDependency */,
+				386D7D3226D5772A00005318 /* PBXTargetDependency */,
 			);
 			name = Albertos;
 			productName = Albertos;
@@ -565,6 +626,10 @@
 						CreatedOnToolsVersion = 13.0;
 						LastSwiftMigration = 1300;
 					};
+					386D7D2C26D5772A00005318 = {
+						CreatedOnToolsVersion = 13.0;
+						LastSwiftMigration = 1300;
+					};
 					38F135F526D3076800E1C41C = {
 						CreatedOnToolsVersion = 13.0;
 					};
@@ -596,12 +661,20 @@
 				38F1360526D3076900E1C41C /* AlbertosTests */,
 				38F1360F26D3076900E1C41C /* AlbertosUITests */,
 				386D7D1326D5765B00005318 /* HippoPayments */,
+				386D7D2C26D5772A00005318 /* HippoAnalytics */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		386D7D1226D5765B00005318 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		386D7D2B26D5772A00005318 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -642,6 +715,14 @@
 				386D7D2326D5767400005318 /* HippoPaymentsError.swift in Sources */,
 				386D7D2726D5769100005318 /* UIViewController+Presentation.swift in Sources */,
 				386D7D2126D5766600005318 /* HippoPaymentsConfirmationViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		386D7D2926D5772A00005318 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				386D7D3926D5773200005318 /* HippoAnalyticsClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -711,6 +792,11 @@
 			target = 386D7D1326D5765B00005318 /* HippoPayments */;
 			targetProxy = 386D7D1826D5765B00005318 /* PBXContainerItemProxy */;
 		};
+		386D7D3226D5772A00005318 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 386D7D2C26D5772A00005318 /* HippoAnalytics */;
+			targetProxy = 386D7D3126D5772A00005318 /* PBXContainerItemProxy */;
+		};
 		38F1360826D3076900E1C41C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 38F135F526D3076800E1C41C /* Albertos */;
@@ -779,6 +865,71 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.alfredohdz.tdd.HippoPayments;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		386D7D3626D5772A00005318 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = HS399QXLRD;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2021 Kraken Vault. All rights reserved.";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alfredohdz.tdd.HippoAnalytics;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		386D7D3726D5772A00005318 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = HS399QXLRD;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2021 Kraken Vault. All rights reserved.";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alfredohdz.tdd.HippoAnalytics;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1074,6 +1225,15 @@
 			buildConfigurations = (
 				386D7D1D26D5765B00005318 /* Debug */,
 				386D7D1E26D5765B00005318 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		386D7D3526D5772A00005318 /* Build configuration list for PBXNativeTarget "HippoAnalytics" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				386D7D3626D5772A00005318 /* Debug */,
+				386D7D3726D5772A00005318 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
