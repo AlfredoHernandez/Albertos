@@ -2,8 +2,19 @@
 //  Copyright © 2021 Jesús Alfredo Hernández Alarcón. All rights reserved.
 //
 
+import Combine
 import Foundation
+import SwiftUI
 
-struct OrderButtonViewModel {
-    let text = "Your Order"
+class OrderButtonViewModel {
+    @Published var text = "Your Order"
+    let orderController: OrderController
+    var cancellables = Set<AnyCancellable>()
+
+    init(orderController: OrderController) {
+        self.orderController = orderController
+        orderController.$order.dropFirst().sink { [weak self] order in
+            self?.text = "Your Order $\(String(format: "%.2f", order.total))"
+        }.store(in: &cancellables)
+    }
 }

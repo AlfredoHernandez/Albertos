@@ -5,6 +5,7 @@
 import SwiftUI
 
 struct OrderButton: View {
+    @EnvironmentObject var orderController: OrderController
     let viewModel: OrderButtonViewModel
 
     @State private(set) var showingDetail: Bool = false
