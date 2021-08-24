@@ -8,6 +8,6 @@ struct OrderDetail: View {
     let viewModel: OrderDetailViewModel
 
     var body: some View {
-        Text(viewModel.text)
+        Text(viewModel.headerText)
     }
 }
