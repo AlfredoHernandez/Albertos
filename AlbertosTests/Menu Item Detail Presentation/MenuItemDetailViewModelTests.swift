@@ -42,4 +42,46 @@ class MenuItemDetailViewModelTests: XCTestCase {
             "$4.12"
         )
     }
+
+    func test_whenItemIsInOrder_buttonSaysRemove() {
+        let menuItem = MenuItem.fixture()
+        let orderController = OrderController()
+        orderController.addToOrder(item: menuItem)
+
+        let viewModel = MenuItemDetailViewModel(item: menuItem, orderController: orderController)
+
+        let text = viewModel.addOrRemoveFromOrderButtonText
+        XCTAssertEqual(text, "Remove from order")
+    }
+
+    func test_whenItemIsNotInOrder_buttonSaysAdd() {
+        let menuItem = MenuItem.fixture()
+        let orderController = OrderController()
+
+        let viewModel = MenuItemDetailViewModel(item: menuItem, orderController: orderController)
+
+        let text = viewModel.addOrRemoveFromOrderButtonText
+        XCTAssertEqual(text, "Add to order")
+    }
+
+    func test_whenItemIsInOrder_buttonActionRemovesIt() {
+        let item = MenuItem.fixture()
+        let orderController = OrderController()
+        orderController.addToOrder(item: item)
+
+        let viewModel = MenuItemDetailViewModel(item: item, orderController: orderController)
+        viewModel.addOrRemoveFromOrder()
+
+        XCTAssertFalse(orderController.order.items.contains { $0 == item })
+    }
+
+    func test_whenItemIsNotInOrder_buttonActionAddsIt() {
+        let item = MenuItem.fixture()
+        let orderController = OrderController()
+
+        let viewModel = MenuItemDetailViewModel(item: item, orderController: orderController)
+        viewModel.addOrRemoveFromOrder()
+
+        XCTAssertTrue(orderController.order.items.contains { $0 == item })
+    }
 }
