@@ -18,18 +18,19 @@ struct OrderDetail: View {
             if let totalAmount = viewModel.totalAmmount {
                 Text(totalAmount)
             }
-            Spacer()
-            Button {
-                viewModel.checkOut()
-            } label: {
-                Text(viewModel.checkoutButtonText)
-                    .font(.callout)
-                    .bold()
-                    .padding(12)
-                    .foregroundColor(.white)
-                    .background(Color.crimson)
-                    .cornerRadius(10.0)
+            if viewModel.shouldShowCheckoutButton {
+                Button {
+                    viewModel.checkOut()
+                } label: {
+                    Text(viewModel.checkoutButtonText)
+                        .font(Font.callout.bold())
+                        .padding(12)
+                        .foregroundColor(.white)
+                        .background(Color.crimson)
+                        .cornerRadius(10.0)
+                }
             }
+            Spacer()
         }
         .padding(8)
     }
