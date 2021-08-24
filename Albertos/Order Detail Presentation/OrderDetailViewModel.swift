@@ -9,6 +9,7 @@ import HippoPayments
 struct OrderDetailViewModel {
     let headerText = "Your Order"
     let emptyMenuFallbackText = "Add dishes to the order to see them here"
+    let checkoutButtonText = "Check Out"
     var totalAmmount: String?
     var cancellables = Set<AnyCancellable>()
     var orderedItems: [MenuItem] = []
