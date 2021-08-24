@@ -7,6 +7,8 @@ import SwiftUI
 
 @main
 struct AlbertosApp: App {
+    let orderController = OrderController()
+
     var body: some Scene {
         WindowGroup {
             ZStack(alignment: .bottom) {
@@ -17,6 +19,7 @@ struct AlbertosApp: App {
                 OrderButton(viewModel: .init())
                     .padding(6)
             }
+            .environmentObject(orderController)
         }
     }
 }

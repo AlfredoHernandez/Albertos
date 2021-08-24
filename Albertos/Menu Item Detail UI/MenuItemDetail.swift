@@ -5,7 +5,7 @@
 import SwiftUI
 
 struct MenuItemDetail: View {
-    let viewModel: MenuItemDetailViewModel
+    @ObservedObject private(set) var viewModel: MenuItemDetailViewModel
 
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
@@ -18,7 +18,9 @@ struct MenuItemDetail: View {
             }
 
             Text(viewModel.price)
-
+            Button(viewModel.addOrRemoveFromOrderButtonText) {
+                viewModel.addOrRemoveFromOrder()
+            }
             Spacer()
         }
         .padding(8)

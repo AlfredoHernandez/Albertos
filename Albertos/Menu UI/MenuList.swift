@@ -6,6 +6,7 @@ import SwiftUI
 
 struct MenuList: View {
     @ObservedObject var viewModel: MenuListViewModel
+    @EnvironmentObject var orderController: OrderController
 
     var body: some View {
         switch viewModel.sections {
@@ -14,7 +15,7 @@ struct MenuList: View {
                 ForEach(menuSections) { section in
                     Section(header: Text(section.category)) {
                         ForEach(section.items) { item in
-                            NavigationLink(destination: MenuItemDetail(viewModel: .init(item: item))) {
+                            NavigationLink(destination: destination(for: item)) {
                                 MenuRow(viewModel: .init(item: item))
                             }
                         }
@@ -25,5 +26,9 @@ struct MenuList: View {
             Text("An error occurred: ")
             Text(error.localizedDescription).italic()
         }
+    }
+
+    func destination(for item: MenuItem) -> MenuItemDetail {
+        MenuItemDetail(viewModel: .init(item: item, orderController: orderController))
     }
 }

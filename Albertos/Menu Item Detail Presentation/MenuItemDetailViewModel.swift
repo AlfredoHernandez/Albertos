@@ -5,7 +5,7 @@
 import Combine
 import Foundation
 
-class MenuItemDetailViewModel {
+class MenuItemDetailViewModel: ObservableObject {
     let item: MenuItem
     @Published private(set) var addOrRemoveFromOrderButtonText = ""
     let name: String
@@ -15,8 +15,7 @@ class MenuItemDetailViewModel {
     private let orderController: OrderController
     private var cancellables = Set<AnyCancellable>()
 
-    // TODO: Remove default value until WIP
-    init(item: MenuItem, orderController: OrderController = OrderController()) {
+    init(item: MenuItem, orderController: OrderController) {
         self.item = item
         self.orderController = orderController
         name = item.name

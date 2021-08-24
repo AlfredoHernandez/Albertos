@@ -8,37 +8,37 @@ import XCTest
 class MenuItemDetailViewModelTests: XCTestCase {
     func test_nameIsItemName() {
         XCTAssertEqual(
-            MenuItemDetailViewModel(item: .fixture(name: "a name")).name,
+            MenuItemDetailViewModel(item: .fixture(name: "a name"), orderController: OrderController()).name,
             "a name"
         )
     }
 
     func test_whenItemIsSpicy_showsSpicyMessage() {
         XCTAssertEqual(
-            MenuItemDetailViewModel(item: .fixture(spicy: true)).spicy,
+            MenuItemDetailViewModel(item: .fixture(spicy: true), orderController: OrderController()).spicy,
             "Spicy"
         )
     }
 
     func test_whenItemIsNotSpicy_doesNotShowSpicyMessage() {
-        XCTAssertNil(MenuItemDetailViewModel(item: .fixture(spicy: false)).spicy)
+        XCTAssertNil(MenuItemDetailViewModel(item: .fixture(spicy: false), orderController: OrderController()).spicy)
     }
 
     func test_price_isFormattedItemPrice() {
         XCTAssertEqual(
-            MenuItemDetailViewModel(item: .fixture(price: 1.0)).price,
+            MenuItemDetailViewModel(item: .fixture(price: 1.0), orderController: OrderController()).price,
             "$1.00"
         )
         XCTAssertEqual(
-            MenuItemDetailViewModel(item: .fixture(price: 2.5)).price,
+            MenuItemDetailViewModel(item: .fixture(price: 2.5), orderController: OrderController()).price,
             "$2.50"
         )
         XCTAssertEqual(
-            MenuItemDetailViewModel(item: .fixture(price: 3.45)).price,
+            MenuItemDetailViewModel(item: .fixture(price: 3.45), orderController: OrderController()).price,
             "$3.45"
         )
         XCTAssertEqual(
-            MenuItemDetailViewModel(item: .fixture(price: 4.123)).price,
+            MenuItemDetailViewModel(item: .fixture(price: 4.123), orderController: OrderController()).price,
             "$4.12"
         )
     }
