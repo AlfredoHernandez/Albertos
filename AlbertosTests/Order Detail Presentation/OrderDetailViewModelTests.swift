@@ -5,6 +5,8 @@
 import Foundation
 
 @testable import Albertos
+import Combine
+import HippoPayments
 import XCTest
 
 class OrderDetailViewModelTests: XCTestCase {
@@ -66,5 +68,30 @@ class OrderDetailViewModelTests: XCTestCase {
         XCTAssertEqual(viewModel.orderedItems.count, 2)
         XCTAssertEqual(viewModel.orderedItems.first?.name, "an item")
         XCTAssertEqual(viewModel.orderedItems.last?.name, "another item")
+    }
+
+    func test_whenCheckoutButtonTapped_startsPaymentProcessingFlow() {
+        let orderController = OrderController()
+        orderController.addToOrder(item: .fixture(name: "name"))
+        orderController.addToOrder(item: .fixture(name: "other name"))
+
+        let paymentProcessingSpy = PaymentProcessingSpy()
+
+        let viewModel = OrderDetailViewModel(orderController: orderController, paymentProcessor: paymentProcessingSpy)
+
+        viewModel.checkOut()
+
+        XCTAssertEqual(paymentProcessingSpy.receivedOrder, orderController.order)
+    }
+
+    // MARK: - Helpers
+
+    class PaymentProcessingSpy: PaymentProcessing {
+        private(set) var receivedOrder: Order?
+
+        func process(order: Order) -> AnyPublisher<Void, Error> {
+            receivedOrder = order
+            return Result<Void, Error>.success(()).publisher.eraseToAnyPublisher()
+        }
     }
 }

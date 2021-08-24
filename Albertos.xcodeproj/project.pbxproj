@@ -22,6 +22,8 @@
 		386D7D3326D5772A00005318 /* HippoAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 386D7D2D26D5772A00005318 /* HippoAnalytics.framework */; };
 		386D7D3426D5772A00005318 /* HippoAnalytics.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 386D7D2D26D5772A00005318 /* HippoAnalytics.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		386D7D3926D5773200005318 /* HippoAnalyticsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386D7D3826D5773200005318 /* HippoAnalyticsClient.swift */; };
+		386D7D3C26D57A4500005318 /* PaymentProcessing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386D7D3B26D57A4500005318 /* PaymentProcessing.swift */; };
+		386D7D3E26D57E3F00005318 /* HippoPaymentsProcessor+PaymentProcessing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386D7D3D26D57E3F00005318 /* HippoPaymentsProcessor+PaymentProcessing.swift */; };
 		38D3A85826D415A9009F4511 /* MenuFetcherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D3A85726D415A9009F4511 /* MenuFetcherTests.swift */; };
 		38D3A85A26D41637009F4511 /* MenuFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D3A85926D41637009F4511 /* MenuFetcher.swift */; };
 		38D3A85C26D4164E009F4511 /* MenuFetching.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D3A85B26D4164E009F4511 /* MenuFetching.swift */; };
@@ -119,6 +121,8 @@
 		386D7D2D26D5772A00005318 /* HippoAnalytics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HippoAnalytics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		386D7D2F26D5772A00005318 /* HippoAnalytics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HippoAnalytics.h; sourceTree = "<group>"; };
 		386D7D3826D5773200005318 /* HippoAnalyticsClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HippoAnalyticsClient.swift; sourceTree = "<group>"; };
+		386D7D3B26D57A4500005318 /* PaymentProcessing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentProcessing.swift; sourceTree = "<group>"; };
+		386D7D3D26D57E3F00005318 /* HippoPaymentsProcessor+PaymentProcessing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HippoPaymentsProcessor+PaymentProcessing.swift"; sourceTree = "<group>"; };
 		38D3A85726D415A9009F4511 /* MenuFetcherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuFetcherTests.swift; sourceTree = "<group>"; };
 		38D3A85926D41637009F4511 /* MenuFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuFetcher.swift; sourceTree = "<group>"; };
 		38D3A85B26D4164E009F4511 /* MenuFetching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuFetching.swift; sourceTree = "<group>"; };
@@ -246,6 +250,15 @@
 				386D7D3826D5773200005318 /* HippoAnalyticsClient.swift */,
 			);
 			path = HippoAnalytics;
+			sourceTree = "<group>";
+		};
+		386D7D3A26D57A3700005318 /* Payment Processing */ = {
+			isa = PBXGroup;
+			children = (
+				386D7D3B26D57A4500005318 /* PaymentProcessing.swift */,
+				386D7D3D26D57E3F00005318 /* HippoPaymentsProcessor+PaymentProcessing.swift */,
+			);
+			path = "Payment Processing";
 			sourceTree = "<group>";
 		};
 		38D3A85F26D42378009F4511 /* Order Feature */ = {
@@ -388,20 +401,21 @@
 		38F135F826D3076800E1C41C /* Albertos */ = {
 			isa = PBXGroup;
 			children = (
-				38D3A88626D42B50009F4511 /* Application */,
 				38F135FD26D3076900E1C41C /* Assets.xcassets */,
+				38D3A88626D42B50009F4511 /* Application */,
 				38FE9DB126D32B6700078BE0 /* Menu Domain */,
 				381570F926D40B9300BCBB5A /* Menu Feature */,
-				38FE9DAD26D329A400078BE0 /* Menu Presentation */,
-				38FE9DB026D32B2100078BE0 /* Menu UI */,
 				38D3A86E26D42840009F4511 /* Menu Item Detail Presentation */,
 				38D3A86B26D4280C009F4511 /* Menu Item Detail UI */,
-				38D3A85F26D42378009F4511 /* Order Feature */,
-				38D3A86226D42395009F4511 /* Order Domain */,
-				38D3A87726D429F9009F4511 /* Order Presentation */,
-				38D3A87426D429CC009F4511 /* Order UI */,
+				38FE9DAD26D329A400078BE0 /* Menu Presentation */,
+				38FE9DB026D32B2100078BE0 /* Menu UI */,
 				38D3A88126D42AAD009F4511 /* Order Detail Presentation */,
 				38D3A88026D42AA2009F4511 /* Order Detail UI */,
+				38D3A86226D42395009F4511 /* Order Domain */,
+				38D3A85F26D42378009F4511 /* Order Feature */,
+				38D3A87726D429F9009F4511 /* Order Presentation */,
+				38D3A87426D429CC009F4511 /* Order UI */,
+				386D7D3A26D57A3700005318 /* Payment Processing */,
 				38F135FF26D3076900E1C41C /* Preview Content */,
 			);
 			path = Albertos;
@@ -731,6 +745,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				38D3A86426D4239D009F4511 /* OrderController.swift in Sources */,
+				386D7D3C26D57A4500005318 /* PaymentProcessing.swift in Sources */,
 				38D3A85A26D41637009F4511 /* MenuFetcher.swift in Sources */,
 				38F1362826D3092F00E1C41C /* MenuGrouping.swift in Sources */,
 				38D3A85C26D4164E009F4511 /* MenuFetching.swift in Sources */,
@@ -743,6 +758,7 @@
 				38F135FA26D3076800E1C41C /* AlbertosApp.swift in Sources */,
 				38D3A88826D42B58009F4511 /* Color.swift in Sources */,
 				38D3A86D26D42821009F4511 /* MenuItemDetail.swift in Sources */,
+				386D7D3E26D57E3F00005318 /* HippoPaymentsProcessor+PaymentProcessing.swift in Sources */,
 				38FE9DAA26D3285700078BE0 /* MenuRow.swift in Sources */,
 				38D3A88326D42ABE009F4511 /* OrderDetailViewModel.swift in Sources */,
 				38FE9DB726D332D200078BE0 /* MenuListViewModel.swift in Sources */,
