@@ -10,6 +10,8 @@ import HippoPayments
 import XCTest
 
 class OrderDetailViewModelTests: XCTestCase {
+    var timeoutForPredicateExpectations: Double { 2 }
+
     func test_headerText() {
         let viewModel = OrderDetailViewModel(orderController: OrderController(), paymentProcessor: PaymentProcessingSpy())
 
@@ -104,6 +106,44 @@ class OrderDetailViewModelTests: XCTestCase {
         XCTAssertTrue(viewModel.shouldShowCheckoutButton)
     }
 
+    func test_whenPaymentSucceeds_updatesPropertyToShowConfirmationAlert() {
+        let viewModel = OrderDetailViewModel(
+            orderController: OrderController(),
+            paymentProcessor: PaymentProcessingStub(returning: .success(()))
+        )
+        let predicate = NSPredicate { _, _ in viewModel.alertToShow != nil }
+        let expectation = XCTNSPredicateExpectation(predicate: predicate, object: .none)
+        viewModel.checkOut()
+        wait(for: [expectation], timeout: timeoutForPredicateExpectations)
+        XCTAssertEqual(viewModel.alertToShow?.title, "")
+        XCTAssertEqual(
+            viewModel.alertToShow?.message,
+            "The payment was successful. Your food will be with you shortly."
+        )
+        XCTAssertEqual(viewModel.alertToShow?.buttonText, "Ok")
+    }
+
+    func test_whenPaymentFails_updatesPropertyToShowErrorAlert() {
+        let viewModel = OrderDetailViewModel(
+            orderController: OrderController(),
+            paymentProcessor: PaymentProcessingStub(
+                returning: .failure(TestError(id: 123))
+            )
+        )
+        let predicate = NSPredicate { _, _ in viewModel.alertToShow != nil }
+        let expectation = XCTNSPredicateExpectation(predicate: predicate, object: .none)
+
+        viewModel.checkOut()
+        wait(for: [expectation], timeout: timeoutForPredicateExpectations)
+
+        XCTAssertEqual(viewModel.alertToShow?.title, "")
+        XCTAssertEqual(
+            viewModel.alertToShow?.message,
+            "There's been an error with your order. Please contact a waiter."
+        )
+        XCTAssertEqual(viewModel.alertToShow?.buttonText, "Ok")
+    }
+
     // MARK: - Helpers
 
     class PaymentProcessingSpy: PaymentProcessing {
@@ -112,6 +152,20 @@ class OrderDetailViewModelTests: XCTestCase {
         func process(order: Order) -> AnyPublisher<Void, Error> {
             receivedOrder = order
             return Result<Void, Error>.success(()).publisher.eraseToAnyPublisher()
+        }
+    }
+
+    class PaymentProcessingStub: PaymentProcessing {
+        let result: Result<Void, Error>
+        init(returning result: Result<Void, Error>) {
+            self.result = result
+        }
+
+        func process(order _: Order) -> AnyPublisher<Void, Error> {
+            result
+                .publisher
+                .delay(for: 0.1, scheduler: RunLoop.main)
+                .eraseToAnyPublisher()
         }
     }
 }

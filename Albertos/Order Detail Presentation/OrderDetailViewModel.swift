@@ -6,7 +6,7 @@ import Combine
 import Foundation
 import HippoPayments
 
-struct OrderDetailViewModel {
+class OrderDetailViewModel: ObservableObject {
     let headerText = "Your Order"
     let emptyMenuFallbackText = "Add dishes to the order to see them here"
     let checkoutButtonText = "Check Out"
@@ -16,6 +16,7 @@ struct OrderDetailViewModel {
     let paymentProcessor: PaymentProcessing
     let orderController: OrderController
     let shouldShowCheckoutButton: Bool
+    @Published var alertToShow: AlertViewModel?
 
     init(orderController: OrderController, paymentProcessor: PaymentProcessing) {
         self.orderController = orderController
@@ -33,6 +34,21 @@ struct OrderDetailViewModel {
     }
 
     func checkOut() {
-        _ = paymentProcessor.process(order: orderController.order)
+        paymentProcessor.process(order: orderController.order)
+            .sink(receiveCompletion: { [weak self] completion in
+                guard case .failure = completion else { return }
+                self?.alertToShow = AlertViewModel(
+                    title: "",
+                    message: "There's been an error with your order. Please contact a waiter.",
+                    buttonText: "Ok"
+                )
+            }, receiveValue: { [weak self] _ in
+                self?.alertToShow = AlertViewModel(
+                    title: "",
+                    message: "The payment was successful. Your food will be with you shortly.",
+                    buttonText: "Ok"
+                )
+            })
+            .store(in: &cancellables)
     }
 }

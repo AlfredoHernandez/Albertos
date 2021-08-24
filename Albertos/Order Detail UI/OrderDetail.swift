@@ -5,7 +5,7 @@
 import SwiftUI
 
 struct OrderDetail: View {
-    let viewModel: OrderDetailViewModel
+    @ObservedObject var viewModel: OrderDetailViewModel
 
     var body: some View {
         VStack(alignment: .center, spacing: 8) {
@@ -31,6 +31,9 @@ struct OrderDetail: View {
                 }
             }
             Spacer()
+        }
+        .alert(item: $viewModel.alertToShow) { alertViewModel in
+            Alert(title: Text(alertViewModel.title), message: Text(alertViewModel.message), dismissButton: .default(Text(alertViewModel.buttonText)))
         }
         .padding(8)
     }
