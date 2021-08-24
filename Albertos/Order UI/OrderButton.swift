@@ -6,6 +6,7 @@ import SwiftUI
 
 struct OrderButton: View {
     @EnvironmentObject var orderController: OrderController
+    @EnvironmentObject var paymentProcessor: PaymentProcessingProxy
     let viewModel: OrderButtonViewModel
 
     @State private(set) var showingDetail: Bool = false
@@ -22,7 +23,7 @@ struct OrderButton: View {
                 .cornerRadius(10.0)
         }
         .sheet(isPresented: $showingDetail) {
-            OrderDetail(viewModel: .init(orderController: orderController))
+            OrderDetail(viewModel: .init(orderController: orderController, paymentProcessor: paymentProcessor))
         }
     }
 }

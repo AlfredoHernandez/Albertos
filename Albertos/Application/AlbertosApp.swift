@@ -8,6 +8,7 @@ import SwiftUI
 @main
 struct AlbertosApp: App {
     let orderController = OrderController()
+    let paymentProcessor = PaymentProcessingProxy()
 
     var body: some Scene {
         WindowGroup {
@@ -20,6 +21,7 @@ struct AlbertosApp: App {
                     .padding(6)
             }
             .environmentObject(orderController)
+            .environmentObject(paymentProcessor)
         }
     }
 }

@@ -15,11 +15,20 @@ struct OrderDetailViewModel {
     var orderedItems: [MenuItem] = []
     let paymentProcessor: PaymentProcessing
     let orderController: OrderController
+    let shouldShowCheckoutButton: Bool
 
-    init(orderController: OrderController, paymentProcessor: PaymentProcessing = HippoPaymentsProcessor(apiKey: "A1B2C3")) {
+    init(orderController: OrderController, paymentProcessor: PaymentProcessing) {
         self.orderController = orderController
         self.paymentProcessor = paymentProcessor
-        totalAmmount = orderController.order.items.isEmpty ? nil : "$\(String(format: "%.2f", orderController.order.total))"
+
+        if orderController.order.items.isEmpty {
+            totalAmmount = .none
+            shouldShowCheckoutButton = false
+        } else {
+            totalAmmount = "Total: $\(String(format: "%.2f", orderController.order.total))"
+            shouldShowCheckoutButton = true
+        }
+
         orderedItems = orderController.order.items
     }
 

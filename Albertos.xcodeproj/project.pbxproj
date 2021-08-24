@@ -24,6 +24,7 @@
 		386D7D3926D5773200005318 /* HippoAnalyticsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386D7D3826D5773200005318 /* HippoAnalyticsClient.swift */; };
 		386D7D3C26D57A4500005318 /* PaymentProcessing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386D7D3B26D57A4500005318 /* PaymentProcessing.swift */; };
 		386D7D3E26D57E3F00005318 /* HippoPaymentsProcessor+PaymentProcessing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386D7D3D26D57E3F00005318 /* HippoPaymentsProcessor+PaymentProcessing.swift */; };
+		386D7D4026D5882500005318 /* PaymentProcessingProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386D7D3F26D5882500005318 /* PaymentProcessingProxy.swift */; };
 		38D3A85826D415A9009F4511 /* MenuFetcherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D3A85726D415A9009F4511 /* MenuFetcherTests.swift */; };
 		38D3A85A26D41637009F4511 /* MenuFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D3A85926D41637009F4511 /* MenuFetcher.swift */; };
 		38D3A85C26D4164E009F4511 /* MenuFetching.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D3A85B26D4164E009F4511 /* MenuFetching.swift */; };
@@ -123,6 +124,7 @@
 		386D7D3826D5773200005318 /* HippoAnalyticsClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HippoAnalyticsClient.swift; sourceTree = "<group>"; };
 		386D7D3B26D57A4500005318 /* PaymentProcessing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentProcessing.swift; sourceTree = "<group>"; };
 		386D7D3D26D57E3F00005318 /* HippoPaymentsProcessor+PaymentProcessing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HippoPaymentsProcessor+PaymentProcessing.swift"; sourceTree = "<group>"; };
+		386D7D3F26D5882500005318 /* PaymentProcessingProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentProcessingProxy.swift; sourceTree = "<group>"; };
 		38D3A85726D415A9009F4511 /* MenuFetcherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuFetcherTests.swift; sourceTree = "<group>"; };
 		38D3A85926D41637009F4511 /* MenuFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuFetcher.swift; sourceTree = "<group>"; };
 		38D3A85B26D4164E009F4511 /* MenuFetching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuFetching.swift; sourceTree = "<group>"; };
@@ -257,6 +259,7 @@
 			children = (
 				386D7D3B26D57A4500005318 /* PaymentProcessing.swift */,
 				386D7D3D26D57E3F00005318 /* HippoPaymentsProcessor+PaymentProcessing.swift */,
+				386D7D3F26D5882500005318 /* PaymentProcessingProxy.swift */,
 			);
 			path = "Payment Processing";
 			sourceTree = "<group>";
@@ -748,6 +751,7 @@
 				386D7D3C26D57A4500005318 /* PaymentProcessing.swift in Sources */,
 				38D3A85A26D41637009F4511 /* MenuFetcher.swift in Sources */,
 				38F1362826D3092F00E1C41C /* MenuGrouping.swift in Sources */,
+				386D7D4026D5882500005318 /* PaymentProcessingProxy.swift in Sources */,
 				38D3A85C26D4164E009F4511 /* MenuFetching.swift in Sources */,
 				38F1362426D308DF00E1C41C /* MenuItem.swift in Sources */,
 				38D3A86126D42382009F4511 /* Order.swift in Sources */,
