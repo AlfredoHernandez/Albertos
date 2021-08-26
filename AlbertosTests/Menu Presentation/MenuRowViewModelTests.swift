@@ -17,6 +17,6 @@ final class MenuRowViewModelTests: XCTestCase {
         let item: MenuItem = .fixture(name: "a name", spicy: true)
         let viewModel = MenuRowViewModel(item: item)
 
-        XCTAssertEqual(viewModel.text, "a name 🌶")
+        XCTAssertEqual(viewModel.text, "a name 🔥")
     }
 }

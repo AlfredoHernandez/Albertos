@@ -8,6 +8,6 @@ class MenuRowViewModel {
     let text: String
 
     init(item: MenuItem) {
-        text = item.spicy ? "\(item.name) 🌶" : item.name
+        text = item.spicy ? "\(item.name) 🔥" : item.name
     }
 }
