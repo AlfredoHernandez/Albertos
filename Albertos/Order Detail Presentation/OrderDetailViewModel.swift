@@ -46,11 +46,15 @@ class OrderDetailViewModel: ObservableObject {
                     buttonAction: self?.onAlertDismiss
                 )
             }, receiveValue: { [weak self] _ in
-                self?.alertToShow = AlertViewModel(
+                guard let self = self else { return }
+                self.alertToShow = AlertViewModel(
                     title: "",
                     message: "The payment was successful. Your food will be with you shortly.",
                     buttonText: "Ok",
-                    buttonAction: self?.onAlertDismiss
+                    buttonAction: {
+                        self.onAlertDismiss()
+                        self.orderController.resetOrder()
+                    }
                 )
             })
             .store(in: &cancellables)
