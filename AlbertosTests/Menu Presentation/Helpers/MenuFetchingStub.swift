@@ -7,17 +7,21 @@ import AlbertosCore
 import Combine
 import Foundation
 
-class MenuFetcherStub: MenuFetching {
-    let result: Result<[MenuItem], Error>
+class MenuFetcherSpy {
+    var publishers = [PassthroughSubject<[MenuItem], Error>]()
 
-    init(returning result: Result<[MenuItem], Error>) {
-        self.result = result
+    func publisher() -> AnyPublisher<[MenuItem], Error> {
+        let publisher = PassthroughSubject<[MenuItem], Error>()
+        publishers.append(publisher)
+        return publisher.eraseToAnyPublisher()
     }
 
-    func fetchMenu() -> AnyPublisher<[MenuItem], Error> {
-        result
-            .publisher
-            .delay(for: 0.1, scheduler: RunLoop.main)
-            .eraseToAnyPublisher()
+    func complete(with menuItems: [MenuItem], at index: Int = 0) {
+        publishers[index].send(menuItems)
+        publishers[index].send(completion: .finished)
+    }
+
+    func complete(with error: Error, at index: Int = 0) {
+        publishers[index].send(completion: .failure(error))
     }
 }

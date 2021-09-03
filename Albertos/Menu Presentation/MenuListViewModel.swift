@@ -11,9 +11,8 @@ class MenuListViewModel: ObservableObject {
 
     var cancellables = Set<AnyCancellable>()
 
-    init(menuFetcher: MenuFetching, menuGrouping: @escaping ([MenuItem]) -> [MenuSection] = groupMenuByCategory) {
+    init(menuFetcher: AnyPublisher<[MenuItem], Error>, menuGrouping: @escaping ([MenuItem]) -> [MenuSection] = groupMenuByCategory) {
         menuFetcher
-            .fetchMenu()
             .sink(
                 receiveCompletion: { [weak self] completion in
                     guard case let .failure(error) = completion else {

@@ -11,13 +11,15 @@ final class MenuListViewModelTests: XCTestCase {
     var cancellables = Set<AnyCancellable>()
 
     func test_whenFetchingStarts_publishesEmptyMenu() throws {
-        let viewModel = MenuListViewModel(menuFetcher: MenuFetcherStub(returning: .success([.fixture()])))
+        let fetcherSpy = MenuFetcherSpy()
+        let viewModel = MenuListViewModel(menuFetcher: fetcherSpy.publisher())
 
         let sections = try viewModel.sections.get()
         XCTAssertTrue(sections.isEmpty)
     }
 
     func test_whenFecthingSucceeds_publishesSectionsBuiltFromReceivedMenuAndGivenGroupingClosure() {
+        let fetcherSpy = MenuFetcherSpy()
         var receivedMenu: [MenuItem]?
         let expectedSections = [MenuSection.fixture()]
         let spyClosure: ([MenuItem]) -> [MenuSection] = { items in receivedMenu = items
@@ -25,9 +27,8 @@ final class MenuListViewModelTests: XCTestCase {
         }
 
         let expectedMenu = [MenuItem.fixture()]
-        let menuFetchingStub = MenuFetcherStub(returning: .success(expectedMenu))
 
-        let viewModel = MenuListViewModel(menuFetcher: menuFetchingStub, menuGrouping: spyClosure)
+        let viewModel = MenuListViewModel(menuFetcher: fetcherSpy.publisher(), menuGrouping: spyClosure)
 
         let expectation = XCTestExpectation(
             description: "Publishes sections built from received menu and given grouping closure"
@@ -45,13 +46,14 @@ final class MenuListViewModelTests: XCTestCase {
             }
             .store(in: &cancellables)
 
+        fetcherSpy.complete(with: expectedMenu)
         wait(for: [expectation], timeout: 1)
     }
 
     func test_whenFetchingFails_publishesAnError() {
+        let fetcherSpy = MenuFetcherSpy()
         let expectedError = TestError(id: 123)
-        let menuFetchingStub = MenuFetcherStub(returning: .failure(expectedError))
-        let viewModel = MenuListViewModel(menuFetcher: menuFetchingStub, menuGrouping: { _ in [] })
+        let viewModel = MenuListViewModel(menuFetcher: fetcherSpy.publisher(), menuGrouping: { _ in [] })
         let exp = XCTestExpectation(description: "Publishes an error")
 
         viewModel.$sections.dropFirst().sink { value in
@@ -61,6 +63,8 @@ final class MenuListViewModelTests: XCTestCase {
             XCTAssertEqual(error as? TestError, expectedError)
             exp.fulfill()
         }.store(in: &cancellables)
+
+        fetcherSpy.complete(with: expectedError)
         wait(for: [exp], timeout: 1)
     }
 }
