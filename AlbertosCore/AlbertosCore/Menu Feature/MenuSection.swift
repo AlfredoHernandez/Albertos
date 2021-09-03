@@ -13,7 +13,3 @@ public struct MenuSection: Equatable {
         self.items = items
     }
 }
-
-extension MenuSection: Identifiable {
-    public var id: String { category }
-}

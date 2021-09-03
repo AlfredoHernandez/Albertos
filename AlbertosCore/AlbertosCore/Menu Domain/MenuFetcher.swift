@@ -5,10 +5,6 @@
 import Combine
 import Foundation
 
-public protocol NetworkFetching {
-    func load(_ request: URLRequest) -> AnyPublisher<Data, URLError>
-}
-
 public class MenuFetcher: MenuFetching {
     let networkFetching: NetworkFetching
 

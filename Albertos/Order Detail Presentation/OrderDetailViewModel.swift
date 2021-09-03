@@ -61,3 +61,7 @@ class OrderDetailViewModel: ObservableObject {
             .store(in: &cancellables)
     }
 }
+
+extension MenuItem: Identifiable {
+    public var id: String { name }
+}

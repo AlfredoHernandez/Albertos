@@ -18,8 +18,4 @@ public struct MenuItem: Equatable {
     }
 }
 
-extension MenuItem: Identifiable {
-    public var id: String { name }
-}
-
 extension MenuItem: Decodable {}

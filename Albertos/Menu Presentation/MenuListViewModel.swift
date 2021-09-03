@@ -28,3 +28,7 @@ class MenuListViewModel: ObservableObject {
             .store(in: &cancellables)
     }
 }
+
+extension MenuSection: Identifiable {
+    public var id: String { category }
+}
