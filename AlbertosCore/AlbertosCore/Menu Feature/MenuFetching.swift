@@ -5,6 +5,6 @@
 import Combine
 import Foundation
 
-protocol MenuFetching {
+public protocol MenuFetching {
     func fetchMenu() -> AnyPublisher<[MenuItem], Error>
 }

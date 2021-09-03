@@ -3,6 +3,7 @@
 //
 
 @testable import Albertos
+import AlbertosCore
 import XCTest
 
 class MenuItemDetailViewModelTests: XCTestCase {

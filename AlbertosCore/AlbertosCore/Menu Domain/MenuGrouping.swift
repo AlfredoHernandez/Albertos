@@ -4,7 +4,7 @@
 
 import Foundation
 
-func groupMenuByCategory(_ menu: [MenuItem]) -> [MenuSection] {
+public func groupMenuByCategory(_ menu: [MenuItem]) -> [MenuSection] {
     Dictionary(grouping: menu, by: { $0.category })
         .map { key, value in
             MenuSection(category: key, items: value)

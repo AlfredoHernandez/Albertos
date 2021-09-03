@@ -2,7 +2,7 @@
 //  Copyright © 2021 Jesús Alfredo Hernández Alarcón. All rights reserved.
 //
 
-@testable import Albertos
+import AlbertosCore
 import XCTest
 
 final class MenuItemsTests: XCTestCase {

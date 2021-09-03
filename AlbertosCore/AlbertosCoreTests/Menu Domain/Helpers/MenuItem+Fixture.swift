@@ -2,7 +2,7 @@
 //  Copyright © 2021 Jesús Alfredo Hernández Alarcón. All rights reserved.
 //
 
-@testable import Albertos
+import AlbertosCore
 
 extension MenuItem {
     static func fixture(category: String = "a category", name: String = "a name", spicy: Bool = false, price: Double = 0.0) -> Self {

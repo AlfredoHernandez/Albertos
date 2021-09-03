@@ -5,18 +5,18 @@
 import Combine
 import Foundation
 
-protocol NetworkFetching {
+public protocol NetworkFetching {
     func load(_ request: URLRequest) -> AnyPublisher<Data, URLError>
 }
 
-class MenuFetcher: MenuFetching {
+public class MenuFetcher: MenuFetching {
     let networkFetching: NetworkFetching
 
-    init(networkFetching: NetworkFetching = URLSession.shared) {
+    public init(networkFetching: NetworkFetching = URLSession.shared) {
         self.networkFetching = networkFetching
     }
 
-    func fetchMenu() -> AnyPublisher<[MenuItem], Error> {
+    public func fetchMenu() -> AnyPublisher<[MenuItem], Error> {
         let url = URL(string: "https://s3.amazonaws.com/mokacoding/menu_response.json")!
         return networkFetching
             .load(URLRequest(url: url))
@@ -26,7 +26,7 @@ class MenuFetcher: MenuFetching {
 }
 
 extension URLSession: NetworkFetching {
-    func load(_ request: URLRequest) -> AnyPublisher<Data, URLError> {
+    public func load(_ request: URLRequest) -> AnyPublisher<Data, URLError> {
         dataTaskPublisher(for: request)
             .map(\.data)
             .eraseToAnyPublisher()
