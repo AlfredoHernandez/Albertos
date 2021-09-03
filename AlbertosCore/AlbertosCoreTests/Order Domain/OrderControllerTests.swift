@@ -48,4 +48,15 @@ class OrderControllerTests: XCTestCase {
         XCTAssertEqual(controller.order.items.count, 1)
         XCTAssertEqual(controller.order.items.first, otherItem)
     }
+
+    func test_resetOrder_removesAllItemsInOrder() {
+        let controller = OrderController()
+        controller.addToOrder(item: .fixture())
+        controller.addToOrder(item: .fixture())
+
+        XCTAssertEqual(controller.order.items.count, 2)
+
+        controller.resetOrder()
+        XCTAssertEqual(controller.order.items.count, 0)
+    }
 }
