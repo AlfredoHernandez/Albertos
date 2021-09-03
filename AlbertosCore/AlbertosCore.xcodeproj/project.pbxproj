@@ -20,6 +20,9 @@
 		389F3EC826E2C55400A1AFC5 /* OrderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389F3EC726E2C55400A1AFC5 /* OrderTests.swift */; };
 		389F3ECB26E2C67500A1AFC5 /* OrderControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389F3ECA26E2C67500A1AFC5 /* OrderControllerTests.swift */; };
 		389F3ECE26E2C6AC00A1AFC5 /* OrderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389F3ECD26E2C6AC00A1AFC5 /* OrderController.swift */; };
+		389F3ED026E2D94A00A1AFC5 /* ManageOrderUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389F3ECF26E2D94A00A1AFC5 /* ManageOrderUseCaseTests.swift */; };
+		389F3ED226E2D9DC00A1AFC5 /* ManageOrderUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389F3ED126E2D9DC00A1AFC5 /* ManageOrderUseCase.swift */; };
+		389F3ED526E2DAF600A1AFC5 /* XCTestCase+MemoryLeaksTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389F3ED426E2DAF600A1AFC5 /* XCTestCase+MemoryLeaksTracking.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +50,9 @@
 		389F3EC726E2C55400A1AFC5 /* OrderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderTests.swift; sourceTree = "<group>"; };
 		389F3ECA26E2C67500A1AFC5 /* OrderControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderControllerTests.swift; sourceTree = "<group>"; };
 		389F3ECD26E2C6AC00A1AFC5 /* OrderController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderController.swift; sourceTree = "<group>"; };
+		389F3ECF26E2D94A00A1AFC5 /* ManageOrderUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageOrderUseCaseTests.swift; sourceTree = "<group>"; };
+		389F3ED126E2D9DC00A1AFC5 /* ManageOrderUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageOrderUseCase.swift; sourceTree = "<group>"; };
+		389F3ED426E2DAF600A1AFC5 /* XCTestCase+MemoryLeaksTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+MemoryLeaksTracking.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +107,7 @@
 		389F3E8226E2A70700A1AFC5 /* AlbertosCoreTests */ = {
 			isa = PBXGroup;
 			children = (
+				389F3ED326E2DAE500A1AFC5 /* Helpers */,
 				389F3E9A26E2A8C500A1AFC5 /* Menu Domain */,
 				389F3EC626E2C54400A1AFC5 /* Order Feature */,
 				389F3EC926E2C65800A1AFC5 /* Order Domain */,
@@ -164,6 +171,7 @@
 			isa = PBXGroup;
 			children = (
 				389F3ECA26E2C67500A1AFC5 /* OrderControllerTests.swift */,
+				389F3ECF26E2D94A00A1AFC5 /* ManageOrderUseCaseTests.swift */,
 			);
 			path = "Order Domain";
 			sourceTree = "<group>";
@@ -172,8 +180,17 @@
 			isa = PBXGroup;
 			children = (
 				389F3ECD26E2C6AC00A1AFC5 /* OrderController.swift */,
+				389F3ED126E2D9DC00A1AFC5 /* ManageOrderUseCase.swift */,
 			);
 			path = "Order Domain";
+			sourceTree = "<group>";
+		};
+		389F3ED326E2DAE500A1AFC5 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				389F3ED426E2DAF600A1AFC5 /* XCTestCase+MemoryLeaksTracking.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -289,6 +306,7 @@
 				389F3E7926E2A70700A1AFC5 /* AlbertosCore.docc in Sources */,
 				389F3EC526E2C50E00A1AFC5 /* Order.swift in Sources */,
 				389F3E9226E2A80B00A1AFC5 /* MenuSection.swift in Sources */,
+				389F3ED226E2D9DC00A1AFC5 /* ManageOrderUseCase.swift in Sources */,
 				389F3E9026E2A7FC00A1AFC5 /* MenuItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -300,7 +318,9 @@
 				389F3EC826E2C55400A1AFC5 /* OrderTests.swift in Sources */,
 				389F3EA126E2A8F000A1AFC5 /* MenuGroupingTests.swift in Sources */,
 				389F3ECB26E2C67500A1AFC5 /* OrderControllerTests.swift in Sources */,
+				389F3ED026E2D94A00A1AFC5 /* ManageOrderUseCaseTests.swift in Sources */,
 				389F3EA826E2A94200A1AFC5 /* MenuItem+Fixture.swift in Sources */,
+				389F3ED526E2DAF600A1AFC5 /* XCTestCase+MemoryLeaksTracking.swift in Sources */,
 				389F3E9D26E2A8D400A1AFC5 /* MenuItem+JSONFixture.swift in Sources */,
 				389F3EA326E2A8FD00A1AFC5 /* MenuItemsTests.swift in Sources */,
 			);

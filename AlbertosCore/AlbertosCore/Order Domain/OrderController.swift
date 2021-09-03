@@ -4,6 +4,13 @@
 
 import Combine
 
+public protocol OrderStore {
+    func add(item: MenuItem)
+    func remove(item: MenuItem)
+    func exists(_ item: MenuItem) -> Bool
+    func reset()
+}
+
 public class OrderController: ObservableObject {
     @Published public private(set) var order: Order
 
