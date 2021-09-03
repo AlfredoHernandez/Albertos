@@ -5,6 +5,7 @@
 import Foundation
 
 @testable import Albertos
+import AlbertosCore
 import Combine
 import HippoPayments
 import XCTest
