@@ -5,13 +5,38 @@
 import Foundation
 
 public class ManageOrderUseCase {
-    private let store: OrderStore
+    private(set) var items = [MenuItem]()
 
-    init(store: OrderStore) {
-        self.store = store
+    var total: Double {
+        items.reduce(0) { partialResult, menuItem in
+            partialResult + menuItem.price
+        }
+    }
+
+    enum Error: Swift.Error {
+        case itemNotFound
+    }
+
+    public init(items: [MenuItem] = []) {
+        self.items = items
     }
 
     func addMenuItem(_ item: MenuItem) {
-        store.add(item: item)
+        items.append(item)
+    }
+
+    func removeMenuItem(_ item: MenuItem) throws {
+        guard let index = items.firstIndex(where: { $0.name == item.name }) else {
+            throw Error.itemNotFound
+        }
+        items.remove(at: index)
+    }
+
+    func resetOrder() {
+        items.removeAll()
+    }
+
+    func isItemInOrder(_ item: MenuItem) -> Bool {
+        items.contains(where: { $0.name == item.name })
     }
 }
