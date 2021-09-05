@@ -35,9 +35,9 @@ class MenuItemDetailViewModel: ObservableObject {
 
     func addOrRemoveFromOrder() {
         if orderController.isItemInOrder(item) {
-            orderController.removeFromOrder(item: item)
+            orderController.removeMenuItem(item)
         } else {
-            orderController.addToOrder(item: item)
+            orderController.addMenuItem(item)
         }
     }
 }

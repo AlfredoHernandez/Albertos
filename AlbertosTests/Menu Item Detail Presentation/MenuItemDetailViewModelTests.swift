@@ -47,7 +47,7 @@ class MenuItemDetailViewModelTests: XCTestCase {
     func test_whenItemIsInOrder_buttonSaysRemove() {
         let menuItem = MenuItem.fixture()
         let orderController = OrderController()
-        orderController.addToOrder(item: menuItem)
+        orderController.addMenuItem(menuItem)
 
         let viewModel = MenuItemDetailViewModel(item: menuItem, orderController: orderController)
 
@@ -68,7 +68,7 @@ class MenuItemDetailViewModelTests: XCTestCase {
     func test_whenItemIsInOrder_buttonActionRemovesIt() {
         let item = MenuItem.fixture()
         let orderController = OrderController()
-        orderController.addToOrder(item: item)
+        orderController.addMenuItem(item)
 
         let viewModel = MenuItemDetailViewModel(item: item, orderController: orderController)
         viewModel.addOrRemoveFromOrder()

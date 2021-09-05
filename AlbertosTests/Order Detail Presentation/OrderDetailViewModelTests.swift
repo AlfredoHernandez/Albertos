@@ -14,20 +14,20 @@ class OrderDetailViewModelTests: XCTestCase {
     var timeoutForPredicateExpectations: Double { 2 }
 
     func test_headerText() {
-        let viewModel = OrderDetailViewModel(orderController: OrderController(), paymentProcessor: PaymentProcessingSpy(), onAlertDismiss: {})
+        let viewModel = OrderDetailViewModel(orderHandler: OrderController(), paymentProcessor: PaymentProcessingSpy(), onAlertDismiss: {})
 
         XCTAssertEqual(viewModel.headerText, "Your Order")
     }
 
     func test_emptyMenuFallbackText() {
-        let viewModel = OrderDetailViewModel(orderController: OrderController(), paymentProcessor: PaymentProcessingSpy(), onAlertDismiss: {})
+        let viewModel = OrderDetailViewModel(orderHandler: OrderController(), paymentProcessor: PaymentProcessingSpy(), onAlertDismiss: {})
 
         XCTAssertEqual(viewModel.emptyMenuFallbackText, "Add dishes to the order to see them here")
     }
 
     func test_whenOrderIsEmpty_shouldNotShowTotalAmount() {
         let orderController = OrderController()
-        let viewModel = OrderDetailViewModel(orderController: orderController, paymentProcessor: PaymentProcessingSpy(), onAlertDismiss: {})
+        let viewModel = OrderDetailViewModel(orderHandler: orderController, paymentProcessor: PaymentProcessingSpy(), onAlertDismiss: {})
 
         XCTAssertNil(viewModel.totalAmmount)
     }
@@ -37,7 +37,7 @@ class OrderDetailViewModelTests: XCTestCase {
             .fixture(price: 1.0),
         ]))
 
-        let viewModel = OrderDetailViewModel(orderController: orderController, paymentProcessor: PaymentProcessingSpy(), onAlertDismiss: {})
+        let viewModel = OrderDetailViewModel(orderHandler: orderController, paymentProcessor: PaymentProcessingSpy(), onAlertDismiss: {})
 
         XCTAssertEqual(viewModel.totalAmmount, "Total: $1.00")
     }
@@ -48,14 +48,14 @@ class OrderDetailViewModelTests: XCTestCase {
             .fixture(price: 2.0),
         ]))
 
-        let viewModel = OrderDetailViewModel(orderController: orderController, paymentProcessor: PaymentProcessingSpy(), onAlertDismiss: {})
+        let viewModel = OrderDetailViewModel(orderHandler: orderController, paymentProcessor: PaymentProcessingSpy(), onAlertDismiss: {})
 
         XCTAssertEqual(viewModel.totalAmmount, "Total: $3.00")
     }
 
     func test_whenOrderIsEmpty_hasNotItemNamesToShow() {
         let orderController = OrderController()
-        let viewModel = OrderDetailViewModel(orderController: orderController, paymentProcessor: PaymentProcessingSpy(), onAlertDismiss: {})
+        let viewModel = OrderDetailViewModel(orderHandler: orderController, paymentProcessor: PaymentProcessingSpy(), onAlertDismiss: {})
 
         XCTAssertTrue(viewModel.orderedItems.isEmpty)
     }
@@ -66,7 +66,7 @@ class OrderDetailViewModelTests: XCTestCase {
             .fixture(name: "another item"),
         ]))
 
-        let viewModel = OrderDetailViewModel(orderController: orderController, paymentProcessor: PaymentProcessingSpy(), onAlertDismiss: {})
+        let viewModel = OrderDetailViewModel(orderHandler: orderController, paymentProcessor: PaymentProcessingSpy(), onAlertDismiss: {})
 
         XCTAssertEqual(viewModel.orderedItems.count, 2)
         XCTAssertEqual(viewModel.orderedItems.first?.name, "an item")
@@ -75,12 +75,12 @@ class OrderDetailViewModelTests: XCTestCase {
 
     func test_whenCheckoutButtonTapped_startsPaymentProcessingFlow() {
         let orderController = OrderController()
-        orderController.addToOrder(item: .fixture(name: "name"))
-        orderController.addToOrder(item: .fixture(name: "other name"))
+        orderController.addMenuItem(.fixture(name: "name"))
+        orderController.addMenuItem(.fixture(name: "other name"))
 
         let paymentProcessingSpy = PaymentProcessingSpy()
 
-        let viewModel = OrderDetailViewModel(orderController: orderController, paymentProcessor: paymentProcessingSpy, onAlertDismiss: {})
+        let viewModel = OrderDetailViewModel(orderHandler: orderController, paymentProcessor: paymentProcessingSpy, onAlertDismiss: {})
 
         viewModel.checkOut()
 
@@ -89,7 +89,7 @@ class OrderDetailViewModelTests: XCTestCase {
 
     func testWhenOrderIsEmptyDoesNotShowCheckoutButton() {
         let viewModel = OrderDetailViewModel(
-            orderController: OrderController(),
+            orderHandler: OrderController(),
             paymentProcessor: PaymentProcessingSpy(),
             onAlertDismiss: {}
         )
@@ -99,9 +99,9 @@ class OrderDetailViewModelTests: XCTestCase {
 
     func testWhenOrderIsNonEmptyShowsCheckoutButton() {
         let orderController = OrderController()
-        orderController.addToOrder(item: .fixture(name: "a name"))
+        orderController.addMenuItem(.fixture(name: "a name"))
         let viewModel = OrderDetailViewModel(
-            orderController: orderController,
+            orderHandler: orderController,
             paymentProcessor: PaymentProcessingSpy(),
             onAlertDismiss: {}
         )
@@ -111,7 +111,7 @@ class OrderDetailViewModelTests: XCTestCase {
 
     func test_whenPaymentSucceeds_updatesPropertyToShowConfirmationAlert() {
         let viewModel = OrderDetailViewModel(
-            orderController: OrderController(),
+            orderHandler: OrderController(),
             paymentProcessor: PaymentProcessingStub(returning: .success(())),
             onAlertDismiss: {}
         )
@@ -129,7 +129,7 @@ class OrderDetailViewModelTests: XCTestCase {
 
     func test_whenPaymentFails_updatesPropertyToShowErrorAlert() {
         let viewModel = OrderDetailViewModel(
-            orderController: OrderController(),
+            orderHandler: OrderController(),
             paymentProcessor: PaymentProcessingStub(
                 returning: .failure(TestError(id: 123))
             ),
@@ -152,7 +152,7 @@ class OrderDetailViewModelTests: XCTestCase {
     func test_whenPaymentSucceeds_updatesPropertyToShowConfirmationAlertThatCallsDimissCallback() {
         var called = false
         let viewModel = OrderDetailViewModel(
-            orderController: OrderController(),
+            orderHandler: OrderController(),
             paymentProcessor: PaymentProcessingStub(returning: .success(())),
             onAlertDismiss: { called = true }
         )
@@ -178,7 +178,7 @@ class OrderDetailViewModelTests: XCTestCase {
     func test_whenPaymentFails_updatesPropertyToShowErrorAlertThatCallsDismissCallback() {
         var called = false
         let viewModel = OrderDetailViewModel(
-            orderController: OrderController(),
+            orderHandler: OrderController(),
             paymentProcessor: PaymentProcessingStub(returning: .failure(TestError(id: 123))),
             onAlertDismiss: { called = true }
         )
@@ -203,9 +203,9 @@ class OrderDetailViewModelTests: XCTestCase {
 
     func test_whenPaymentSucceedsDismissingTheAlert_resetsTheOrder() {
         let orderController = OrderController()
-        orderController.addToOrder(item: .fixture())
+        orderController.addMenuItem(.fixture())
         let viewModel = OrderDetailViewModel(
-            orderController: orderController,
+            orderHandler: orderController,
             paymentProcessor: PaymentProcessingStub(returning: .success(())),
             onAlertDismiss: {}
         )

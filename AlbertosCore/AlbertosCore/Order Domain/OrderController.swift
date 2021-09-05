@@ -4,7 +4,10 @@
 
 import Combine
 
-public class OrderController: ObservableObject {
+public class OrderController: OrderHandler, ObservableObject {
+    public var items: [MenuItem] { order.items }
+    public var total: Double { order.total }
+
     @Published public private(set) var order: Order
 
     public init(order: Order = Order(items: [])) {
@@ -15,11 +18,11 @@ public class OrderController: ObservableObject {
         order.items.contains { $0 == item }
     }
 
-    public func addToOrder(item: MenuItem) {
+    public func addMenuItem(_ item: MenuItem) {
         order = Order(items: order.items + [item])
     }
 
-    public func removeFromOrder(item: MenuItem) {
+    public func removeMenuItem(_ item: MenuItem) {
         let items = order.items
         guard let indexToRemove = items.firstIndex(where: { $0.name == item.name }) else { return }
 

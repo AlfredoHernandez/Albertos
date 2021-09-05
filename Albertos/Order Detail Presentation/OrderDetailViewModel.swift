@@ -15,29 +15,29 @@ class OrderDetailViewModel: ObservableObject {
     var cancellables = Set<AnyCancellable>()
     var orderedItems: [MenuItem] = []
     let paymentProcessor: PaymentProcessing
-    let orderController: OrderController
+    let orderHandler: OrderHandler
     let shouldShowCheckoutButton: Bool
     @Published var alertToShow: AlertViewModel?
     private let onAlertDismiss: () -> Void
 
-    init(orderController: OrderController, paymentProcessor: PaymentProcessing, onAlertDismiss: @escaping () -> Void) {
-        self.orderController = orderController
+    init(orderHandler: OrderHandler, paymentProcessor: PaymentProcessing, onAlertDismiss: @escaping () -> Void) {
+        self.orderHandler = orderHandler
         self.paymentProcessor = paymentProcessor
         self.onAlertDismiss = onAlertDismiss
 
-        if orderController.order.items.isEmpty {
+        if orderHandler.items.isEmpty {
             totalAmmount = .none
             shouldShowCheckoutButton = false
         } else {
-            totalAmmount = "Total: $\(String(format: "%.2f", orderController.order.total))"
+            totalAmmount = "Total: $\(String(format: "%.2f", orderHandler.total))"
             shouldShowCheckoutButton = true
         }
 
-        orderedItems = orderController.order.items
+        orderedItems = orderHandler.items
     }
 
     func checkOut() {
-        paymentProcessor.process(order: orderController.order)
+        paymentProcessor.process(order: (orderHandler as! OrderController).order)
             .sink(receiveCompletion: { [weak self] completion in
                 guard case .failure = completion else { return }
                 self?.alertToShow = AlertViewModel(
@@ -54,7 +54,7 @@ class OrderDetailViewModel: ObservableObject {
                     buttonText: "Ok",
                     buttonAction: {
                         self.onAlertDismiss()
-                        self.orderController.resetOrder()
+                        self.orderHandler.resetOrder()
                     }
                 )
             })

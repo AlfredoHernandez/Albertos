@@ -25,7 +25,7 @@ struct OrderButton: View {
         }
         .sheet(isPresented: $showingDetail) {
             OrderDetailView(viewModel: .init(
-                orderController: orderController,
+                orderHandler: orderController,
                 paymentProcessor: paymentProcessor,
                 onAlertDismiss: { self.showingDetail = false }
             ))

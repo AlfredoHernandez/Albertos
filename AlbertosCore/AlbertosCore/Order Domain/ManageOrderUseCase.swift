@@ -4,10 +4,10 @@
 
 import Foundation
 
-public class ManageOrderUseCase {
-    private(set) var items = [MenuItem]()
+public class ManageOrderUseCase: OrderHandler {
+    public private(set) var items = [MenuItem]()
 
-    var total: Double {
+    public var total: Double {
         items.reduce(0) { partialResult, menuItem in
             partialResult + menuItem.price
         }
@@ -21,22 +21,22 @@ public class ManageOrderUseCase {
         self.items = items
     }
 
-    func addMenuItem(_ item: MenuItem) {
+    public func addMenuItem(_ item: MenuItem) {
         items.append(item)
     }
 
-    func removeMenuItem(_ item: MenuItem) throws {
+    public func removeMenuItem(_ item: MenuItem) throws {
         guard let index = items.firstIndex(where: { $0.name == item.name }) else {
             throw Error.itemNotFound
         }
         items.remove(at: index)
     }
 
-    func resetOrder() {
+    public func resetOrder() {
         items.removeAll()
     }
 
-    func isItemInOrder(_ item: MenuItem) -> Bool {
+    public func isItemInOrder(_ item: MenuItem) -> Bool {
         items.contains(where: { $0.name == item.name })
     }
 }
