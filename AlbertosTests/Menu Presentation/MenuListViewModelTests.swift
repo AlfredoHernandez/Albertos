@@ -11,29 +11,25 @@ final class MenuListViewModelTests: XCTestCase {
     var cancellables = Set<AnyCancellable>()
 
     func test_whenFetchingStarts_publishesEmptyMenu() throws {
-        let fetcherSpy = MenuFetcherSpy()
-        let viewModel = MenuListViewModel(menuFetcher: fetcherSpy.publisher())
+        let (sut, _) = makeSUT()
 
-        let sections = try viewModel.sections.get()
+        let sections = try sut.sections.get()
         XCTAssertTrue(sections.isEmpty)
     }
 
     func test_whenFecthingSucceeds_publishesSectionsBuiltFromReceivedMenuAndGivenGroupingClosure() {
-        let fetcherSpy = MenuFetcherSpy()
         var receivedMenu: [MenuItem]?
         let expectedSections = [MenuSection.fixture()]
         let spyClosure: ([MenuItem]) -> [MenuSection] = { items in receivedMenu = items
             return expectedSections
         }
-
         let expectedMenu = [MenuItem.fixture()]
-
-        let viewModel = MenuListViewModel(menuFetcher: fetcherSpy.publisher(), menuGrouping: spyClosure)
+        let (sut, fetcher) = makeSUT(menuGrouping: spyClosure)
 
         let expectation = XCTestExpectation(
             description: "Publishes sections built from received menu and given grouping closure"
         )
-        viewModel
+        sut
             .$sections
             .dropFirst()
             .sink { value in
@@ -46,17 +42,16 @@ final class MenuListViewModelTests: XCTestCase {
             }
             .store(in: &cancellables)
 
-        fetcherSpy.complete(with: expectedMenu)
+        fetcher.complete(with: expectedMenu)
         wait(for: [expectation], timeout: 1)
     }
 
     func test_whenFetchingFails_publishesAnError() {
-        let fetcherSpy = MenuFetcherSpy()
         let expectedError = TestError(id: 123)
-        let viewModel = MenuListViewModel(menuFetcher: fetcherSpy.publisher(), menuGrouping: { _ in [] })
+        let (sut, fetcher) = makeSUT()
         let exp = XCTestExpectation(description: "Publishes an error")
 
-        viewModel.$sections.dropFirst().sink { value in
+        sut.$sections.dropFirst().sink { value in
             guard case let .failure(error) = value else {
                 return XCTFail("Expected a failing result, got \(value)")
             }
@@ -64,7 +59,21 @@ final class MenuListViewModelTests: XCTestCase {
             exp.fulfill()
         }.store(in: &cancellables)
 
-        fetcherSpy.complete(with: expectedError)
+        fetcher.complete(with: expectedError)
         wait(for: [exp], timeout: 1)
+    }
+
+    // MARK: - Helpers
+
+    private func makeSUT(
+        menuGrouping: @escaping ([MenuItem]) -> [MenuSection] = { _ in [] },
+        file: StaticString = #filePath,
+        line: UInt = #line
+    ) -> (MenuListViewModel, MenuFetcherSpy) {
+        let fetcherSpy = MenuFetcherSpy()
+        let sut = MenuListViewModel(menuFetcher: fetcherSpy.publisher(), menuGrouping: menuGrouping)
+        trackForMemoryLeaks(sut, file: file, line: line)
+        trackForMemoryLeaks(fetcherSpy, file: file, line: line)
+        return (sut, fetcherSpy)
     }
 }
