@@ -71,7 +71,7 @@ final class MenuListViewModelTests: XCTestCase {
         line: UInt = #line
     ) -> (MenuListViewModel, MenuFetcherSpy) {
         let fetcherSpy = MenuFetcherSpy()
-        let sut = MenuListViewModel(menuFetcher: fetcherSpy.publisher(), menuGrouping: menuGrouping)
+        let sut = MenuListViewModel(menuFetcher: fetcherSpy.publisher(), menuGroupingStrategy: menuGrouping)
         trackForMemoryLeaks(sut, file: file, line: line)
         trackForMemoryLeaks(fetcherSpy, file: file, line: line)
         return (sut, fetcherSpy)

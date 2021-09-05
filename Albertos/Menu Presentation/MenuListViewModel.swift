@@ -13,7 +13,7 @@ class MenuListViewModel: ObservableObject {
 
     init(
         menuFetcher: AnyPublisher<[MenuItem], Error>,
-        menuGrouping: @escaping ([MenuItem]) -> [MenuSection]
+        menuGroupingStrategy: @escaping ([MenuItem]) -> [MenuSection]
     ) {
         menuFetcher
             .sink(
@@ -24,7 +24,7 @@ class MenuListViewModel: ObservableObject {
                     self?.sections = .failure(error)
                 },
                 receiveValue: { [weak self] value in
-                    self?.sections = .success(menuGrouping(value))
+                    self?.sections = .success(menuGroupingStrategy(value))
                 }
             )
             .store(in: &cancellables)
