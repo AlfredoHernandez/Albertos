@@ -4,7 +4,7 @@
 
 import SwiftUI
 
-struct OrderDetail: View {
+struct OrderDetailView: View {
     @ObservedObject var viewModel: OrderDetailViewModel
 
     var body: some View {
