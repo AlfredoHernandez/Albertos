@@ -7,7 +7,7 @@ import SwiftUI
 
 struct MenuListView: View {
     @ObservedObject var viewModel: MenuListViewModel
-    @EnvironmentObject var orderController: OrderController
+    var orderController: OrderController
 
     var body: some View {
         switch viewModel.sections {
