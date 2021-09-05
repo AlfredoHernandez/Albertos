@@ -24,7 +24,7 @@ struct MenuListView: View {
                 }
             }.listStyle(PlainListStyle())
         case let .failure(error):
-            Text("An error occurred: ")
+            Text(MenuListViewModel.errorMessage)
             Text(error.localizedDescription).italic()
         }
     }

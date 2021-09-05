@@ -10,6 +10,10 @@ import XCTest
 final class MenuListViewModelTests: XCTestCase {
     var cancellables = Set<AnyCancellable>()
 
+    func test_hasErrorMessage() {
+        XCTAssertEqual(MenuListViewModel.errorMessage, "An error occurred: ")
+    }
+
     func test_whenFetchingStarts_publishesEmptyMenu() throws {
         let (sut, _) = makeSUT()
 

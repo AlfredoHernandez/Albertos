@@ -8,6 +8,7 @@ import Foundation
 
 class MenuListViewModel: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
+    static let errorMessage = "An error occurred: "
     @Published private(set) var sections: Result<[MenuSection], Error> = .success([])
 
     init(
