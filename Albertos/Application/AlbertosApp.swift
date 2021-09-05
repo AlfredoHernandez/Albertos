@@ -21,7 +21,7 @@ struct AlbertosApp: App {
         WindowGroup {
             ZStack(alignment: .bottom) {
                 NavigationView {
-                    MenuList(viewModel: .init(menuFetcher: menuFectherLoader, menuGroupingStrategy: groupMenuByCategory))
+                    MenuListView(viewModel: .init(menuFetcher: menuFectherLoader, menuGroupingStrategy: groupMenuByCategory))
                         .navigationTitle("Alberto's 🇮🇹")
                 }
                 OrderButton(viewModel: .init(orderController: orderController))

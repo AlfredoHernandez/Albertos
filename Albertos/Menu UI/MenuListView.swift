@@ -5,7 +5,7 @@
 import AlbertosCore
 import SwiftUI
 
-struct MenuList: View {
+struct MenuListView: View {
     @ObservedObject var viewModel: MenuListViewModel
     @EnvironmentObject var orderController: OrderController
 
