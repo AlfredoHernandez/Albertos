@@ -2,6 +2,7 @@
 //  Copyright © 2021 Jesús Alfredo Hernández Alarcón. All rights reserved.
 //
 
+import AlbertosCore
 import Combine
 import Foundation
 
@@ -34,9 +35,9 @@ class MenuItemDetailViewModel: ObservableObject {
 
     func addOrRemoveFromOrder() {
         if orderController.isItemInOrder(item) {
-            orderController.removeFromOrder(item: item)
+            orderController.removeMenuItem(item)
         } else {
-            orderController.addToOrder(item: item)
+            orderController.addMenuItem(item)
         }
     }
 }

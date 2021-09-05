@@ -2,6 +2,7 @@
 //  Copyright © 2021 Jesús Alfredo Hernández Alarcón. All rights reserved.
 //
 
+import AlbertosCore
 import SwiftUI
 
 struct OrderButton: View {
@@ -23,7 +24,11 @@ struct OrderButton: View {
                 .cornerRadius(10.0)
         }
         .sheet(isPresented: $showingDetail) {
-            OrderDetail(viewModel: .init(orderController: orderController, paymentProcessor: paymentProcessor, onAlertDismiss: { self.showingDetail = false }))
+            OrderDetailView(viewModel: .init(
+                orderHandler: orderController,
+                paymentProcessor: paymentProcessor,
+                onAlertDismiss: { self.showingDetail = false }
+            ))
         }
     }
 }

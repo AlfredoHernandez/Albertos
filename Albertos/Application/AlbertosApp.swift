@@ -2,8 +2,15 @@
 //  Copyright © 2021 Jesús Alfredo Hernández Alarcón. All rights reserved.
 //
 
+import AlbertosCore
 import Combine
 import SwiftUI
+
+let menuFectherLoader = URLSession.shared
+    .dataTaskPublisher(for: URL(string: "https://s3.amazonaws.com/mokacoding/menu_response.json")!)
+    .map(\.data)
+    .decode(type: [MenuItem].self, decoder: JSONDecoder())
+    .eraseToAnyPublisher()
 
 @main
 struct AlbertosApp: App {
@@ -14,7 +21,7 @@ struct AlbertosApp: App {
         WindowGroup {
             ZStack(alignment: .bottom) {
                 NavigationView {
-                    MenuList(viewModel: .init(menuFetcher: MenuFetcher()))
+                    MenuListView(viewModel: .init(menuFetcher: menuFectherLoader, menuGroupingStrategy: groupMenuByCategory), orderController: orderController)
                         .navigationTitle("Alberto's 🇮🇹")
                 }
                 OrderButton(viewModel: .init(orderController: orderController))
