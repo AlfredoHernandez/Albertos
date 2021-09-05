@@ -7,9 +7,8 @@ import Combine
 import Foundation
 
 class MenuListViewModel: ObservableObject {
+    private var cancellables = Set<AnyCancellable>()
     @Published private(set) var sections: Result<[MenuSection], Error> = .success([])
-
-    var cancellables = Set<AnyCancellable>()
 
     init(
         menuFetcher: AnyPublisher<[MenuItem], Error>,

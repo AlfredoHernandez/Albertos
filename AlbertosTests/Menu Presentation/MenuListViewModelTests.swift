@@ -17,50 +17,28 @@ final class MenuListViewModelTests: XCTestCase {
         XCTAssertTrue(sections.isEmpty)
     }
 
-    func test_whenFecthingSucceeds_publishesSectionsBuiltFromReceivedMenuAndGivenGroupingClosure() {
-        var receivedMenu: [MenuItem]?
-        let expectedSections = [MenuSection.fixture()]
-        let spyClosure: ([MenuItem]) -> [MenuSection] = { items in receivedMenu = items
-            return expectedSections
-        }
-        let expectedMenu = [MenuItem.fixture()]
-        let (sut, fetcher) = makeSUT(menuGrouping: spyClosure)
+    func test_whenFecthingMenuSucceedsAndGroupingByCategory_publishesSectionsBuiltFromReceivedMenu() {
+        let menu: [MenuItem] = [
+            .fixture(category: "category A", name: "item 1"),
+            .fixture(category: "category B", name: "item 2"),
+        ]
+        let (sut, fetcher) = makeSUT(menuGrouping: groupMenuByCategory)
 
-        let expectation = XCTestExpectation(
-            description: "Publishes sections built from received menu and given grouping closure"
-        )
-        sut
-            .$sections
-            .dropFirst()
-            .sink { value in
-                guard case let .success(sections) = value else {
-                    return XCTFail("Expected a successful result, got \(value)")
-                }
-                XCTAssertEqual(receivedMenu, expectedMenu)
-                XCTAssertEqual(sections, expectedSections)
-                expectation.fulfill()
-            }
-            .store(in: &cancellables)
-
-        fetcher.complete(with: expectedMenu)
-        wait(for: [expectation], timeout: 1)
+        let expectedMenu: [MenuSection] = [
+            .fixture(category: "category B", items: [menu.last!]),
+            .fixture(category: "category A", items: [menu.first!]),
+        ]
+        assertThat(sut, completesWith: .success(expectedMenu), when: {
+            fetcher.complete(with: menu)
+        })
     }
 
     func test_whenFetchingFails_publishesAnError() {
-        let expectedError = TestError(id: 123)
         let (sut, fetcher) = makeSUT()
-        let exp = XCTestExpectation(description: "Publishes an error")
 
-        sut.$sections.dropFirst().sink { value in
-            guard case let .failure(error) = value else {
-                return XCTFail("Expected a failing result, got \(value)")
-            }
-            XCTAssertEqual(error as? TestError, expectedError)
-            exp.fulfill()
-        }.store(in: &cancellables)
-
-        fetcher.complete(with: expectedError)
-        wait(for: [exp], timeout: 1)
+        assertThat(sut, completesWith: .failure(anyNSError()), when: {
+            fetcher.complete(with: anyNSError())
+        })
     }
 
     // MARK: - Helpers
@@ -75,5 +53,33 @@ final class MenuListViewModelTests: XCTestCase {
         trackForMemoryLeaks(sut, file: file, line: line)
         trackForMemoryLeaks(fetcherSpy, file: file, line: line)
         return (sut, fetcherSpy)
+    }
+
+    private func assertThat(
+        _ sut: MenuListViewModel,
+        completesWith expectedResult: Result<[MenuSection], Error>,
+        when action: () -> Void,
+        file: StaticString = #filePath,
+        line: UInt = #line
+    ) {
+        let expectation = XCTestExpectation(description: "Wait for loader to complete")
+        sut
+            .$sections
+            .dropFirst()
+            .sink { receivedResult in
+                switch (receivedResult, expectedResult) {
+                case let (.success(receivedMenu), .success(expectedMenu)):
+                    XCTAssertEqual(receivedMenu, expectedMenu, file: file, line: line)
+                case let (.failure(receivedError), .failure(expectedError)):
+                    XCTAssertEqual(receivedError as NSError, expectedError as NSError, file: file, line: line)
+                default:
+                    XCTFail("Expected \(expectedResult), got \(receivedResult) instead.", file: file, line: line)
+                }
+                expectation.fulfill()
+            }
+            .store(in: &cancellables)
+
+        action()
+        wait(for: [expectation], timeout: 1)
     }
 }
