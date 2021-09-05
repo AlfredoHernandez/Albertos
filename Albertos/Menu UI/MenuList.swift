@@ -22,7 +22,7 @@ struct MenuList: View {
                         }
                     }
                 }
-            }
+            }.listStyle(PlainListStyle())
         case let .failure(error):
             Text("An error occurred: ")
             Text(error.localizedDescription).italic()

@@ -9,27 +9,52 @@ struct OrderDetailView: View {
 
     var body: some View {
         VStack(alignment: .center, spacing: 8) {
+            Capsule()
+                .fill(Color.black)
+                .frame(width: 140, height: 5, alignment: .center)
             Text(viewModel.headerText)
+                .font(.title)
+                .fontWeight(.heavy)
             if viewModel.orderedItems.isEmpty {
-                Text(viewModel.emptyMenuFallbackText).multilineTextAlignment(.center)
-            } else {
-                List(viewModel.orderedItems) { Text($0.name) }
-            }
-            if let totalAmount = viewModel.totalAmmount {
-                Text(totalAmount)
-            }
-            if viewModel.shouldShowCheckoutButton {
-                Button {
-                    viewModel.checkOut()
-                } label: {
-                    Text(viewModel.checkoutButtonText)
-                        .font(Font.callout.bold())
-                        .padding(12)
-                        .foregroundColor(.white)
-                        .background(Color.crimson)
-                        .cornerRadius(10.0)
+                Spacer()
+                VStack {
+                    Image(systemName: "bag")
+                        .font(.system(size: 180))
+                        .foregroundColor(.tomato)
+                    Text(viewModel.emptyMenuFallbackText)
+                        .font(.body)
+                        .multilineTextAlignment(.center)
+                        .foregroundColor(.gray)
                 }
+                Spacer()
+            } else {
+                List(viewModel.orderedItems) { item in
+                    HStack {
+                        Text(item.name)
+                        Spacer()
+                        Text("$ \(String(format: "%.2f", item.price))")
+                    }
+                }.listStyle(PlainListStyle())
             }
+            HStack(alignment: .center) {
+                if let totalAmount = viewModel.totalAmmount {
+                    Text(totalAmount)
+                        .fontWeight(.bold)
+                }
+                Spacer()
+                if viewModel.shouldShowCheckoutButton {
+                    Button {
+                        viewModel.checkOut()
+                    } label: {
+                        Text(viewModel.checkoutButtonText)
+                            .font(Font.callout.bold())
+                            .padding(12)
+                            .foregroundColor(.white)
+                            .background(Color.crimson)
+                            .cornerRadius(10.0)
+                    }
+                }
+            }.padding()
             Spacer()
         }
         .alert(item: $viewModel.alertToShow) { alertViewModel in
@@ -42,3 +67,16 @@ struct OrderDetailView: View {
         .padding(8)
     }
 }
+
+//import AlbertosCore
+//
+//struct OrderDetailView_Preview: PreviewProvider {
+//    static var previews: some View {
+//        OrderDetailView(viewModel: .init(
+//            // orderController: OrderController(order: Order(items: [MenuItem(category: "category", name: "This is a new dish", spicy: true, price: 10)])),
+//            orderController: OrderController(),
+//            paymentProcessor: PaymentProcessingProxy(),
+//            onAlertDismiss: {}
+//        ))
+//    }
+//}
