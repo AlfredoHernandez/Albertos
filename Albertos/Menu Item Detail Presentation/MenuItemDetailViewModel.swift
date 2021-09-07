@@ -13,7 +13,8 @@ class MenuItemDetailViewModel: ObservableObject {
     let price: String
     let addToOrderText = "Add to order"
 
-    @Published private(set) var items: [MenuItem] = []
+    var items: [MenuItem] = []
+    @Published private(set) var numberOfItemsInOrder = ""
 
     private let orderController: OrderController
     private var cancellables = Set<AnyCancellable>()
@@ -25,16 +26,19 @@ class MenuItemDetailViewModel: ObservableObject {
         spicy = item.spicy ? "Spicy" : .none
         price = "$\(String(format: "%.2f", item.price))"
 
+        numberOfItemsInOrder = String(format: "%d items in order", items.count)
         items = orderController.items.filter { $0 == item }
     }
 
     func addItem() {
         orderController.addMenuItem(item)
         items = orderController.items.filter { $0 == item }
+        numberOfItemsInOrder = String(format: "%d items in order", items.count)
     }
 
     func removeItem() {
         orderController.removeMenuItem(item)
         items = orderController.items.filter { $0 == item }
+        numberOfItemsInOrder = String(format: "%d items in order", items.count)
     }
 }

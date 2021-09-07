@@ -62,16 +62,21 @@ class MenuItemDetailViewModelTests: XCTestCase {
     func test_numberOfItemsInOrder_excludesOtherItems() {
         let item: MenuItem = .fixture(name: "an item")
         let (sut, _) = makeSUT(item: item, order: [.fixture(name: "another item")])
+
+        XCTAssertEqual(sut.numberOfItemsInOrder, "0 items in order")
         XCTAssertEqual(sut.items.count, 0)
 
         sut.addItem()
         XCTAssertEqual(sut.items.count, 1)
+        XCTAssertEqual(sut.numberOfItemsInOrder, "1 items in order")
 
         sut.addItem()
         XCTAssertEqual(sut.items.count, 2)
+        XCTAssertEqual(sut.numberOfItemsInOrder, "2 items in order")
 
         sut.removeItem()
         XCTAssertEqual(sut.items.count, 1)
+        XCTAssertEqual(sut.numberOfItemsInOrder, "1 items in order")
     }
 
     // MARK: - Helpers
