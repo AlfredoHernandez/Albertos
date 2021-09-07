@@ -6,7 +6,7 @@ import AlbertosCore
 import SwiftUI
 
 struct OrderButton: View {
-    @EnvironmentObject var orderController: OrderController
+    let orderController: OrderController
     @EnvironmentObject var paymentProcessor: PaymentProcessingProxy
     let viewModel: OrderButtonViewModel
 

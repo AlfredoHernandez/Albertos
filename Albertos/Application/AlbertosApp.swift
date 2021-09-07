@@ -24,10 +24,9 @@ struct AlbertosApp: App {
                     MenuListView(viewModel: .init(menuFetcher: menuFectherLoader, menuGroupingStrategy: groupMenuByCategory), orderController: orderController)
                         .navigationTitle("Alberto's 🇮🇹")
                 }
-                OrderButton(viewModel: .init(orderController: orderController))
+                OrderButton(orderController: orderController, viewModel: .init(orderController: orderController))
                     .padding(6)
             }
-            .environmentObject(orderController)
             .environmentObject(paymentProcessor)
         }
     }
