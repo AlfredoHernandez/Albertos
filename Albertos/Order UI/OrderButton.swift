@@ -6,9 +6,9 @@ import AlbertosCore
 import SwiftUI
 
 struct OrderButton: View {
-    let orderController: OrderController
+    let orderController: OrderHandler
     @EnvironmentObject var paymentProcessor: PaymentProcessingProxy
-    let viewModel: OrderButtonViewModel
+    @ObservedObject var viewModel: OrderButtonViewModel
 
     @State private(set) var showingDetail: Bool = false
 

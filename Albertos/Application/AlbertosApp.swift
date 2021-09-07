@@ -21,11 +21,19 @@ struct AlbertosApp: App {
         WindowGroup {
             ZStack(alignment: .bottom) {
                 NavigationView {
-                    MenuListView(viewModel: .init(menuFetcher: menuFectherLoader, menuGroupingStrategy: groupMenuByCategory), orderController: orderController)
-                        .navigationTitle("Alberto's 🇮🇹")
+                    MenuListView(
+                        viewModel: .init(
+                            menuFetcher: menuFectherLoader,
+                            menuGroupingStrategy: groupMenuByCategory
+                        ),
+                        orderController: orderController
+                    )
+                    .navigationTitle("Alberto's 🇮🇹")
                 }
-                OrderButton(orderController: orderController, viewModel: .init(orderController: orderController))
-                    .padding(6)
+                OrderButton(
+                    orderController: orderController,
+                    viewModel: .init(orderController: orderController)
+                ).padding(6)
             }
             .environmentObject(paymentProcessor)
         }
