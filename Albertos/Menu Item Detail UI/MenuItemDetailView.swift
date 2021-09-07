@@ -19,7 +19,7 @@ struct MenuItemDetailView: View {
             }
             Text(viewModel.price)
             Stepper(
-                viewModel.addOrRemoveFromOrderButtonText,
+                viewModel.addToOrderText,
                 onIncrement: {
                     viewModel.addOrRemoveFromOrder()
                 },
