@@ -21,9 +21,11 @@ struct MenuItemDetailView: View {
             Stepper(
                 viewModel.addToOrderText,
                 onIncrement: {
-                    viewModel.addOrRemoveFromOrder()
+                    viewModel.addItem()
                 },
-                onDecrement: {}
+                onDecrement: {
+                    viewModel.removeItem()
+                }
             )
             Divider()
             Text("Description")
