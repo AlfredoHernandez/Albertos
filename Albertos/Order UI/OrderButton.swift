@@ -17,12 +17,14 @@ struct OrderButton: View {
             self.showingDetail.toggle()
         } label: {
             Text(viewModel.text)
+                .frame(maxWidth: .infinity)
                 .font(Font.callout.bold())
                 .padding(12)
                 .foregroundColor(.white)
                 .background(Color.crimson)
                 .cornerRadius(10.0)
         }
+        .shadow(radius: 8)
         .sheet(isPresented: $showingDetail) {
             OrderDetailView(viewModel: .init(
                 orderHandler: orderController,

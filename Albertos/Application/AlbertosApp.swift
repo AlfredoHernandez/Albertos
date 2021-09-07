@@ -33,7 +33,7 @@ struct AlbertosApp: App {
                 OrderButton(
                     orderController: orderController,
                     viewModel: .init(orderController: orderController)
-                ).padding(6)
+                ).padding(16)
             }
             .environmentObject(paymentProcessor)
         }
