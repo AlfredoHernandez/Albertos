@@ -4,7 +4,7 @@
 
 import SwiftUI
 
-struct MenuItemDetail: View {
+struct MenuItemDetailView: View {
     @ObservedObject private(set) var viewModel: MenuItemDetailViewModel
 
     var body: some View {
