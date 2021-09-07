@@ -35,7 +35,7 @@
 		386D7D4326D58E8500005318 /* AlertViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386D7D4226D58E8500005318 /* AlertViewModel.swift */; };
 		389F3EAB26E2AB0C00A1AFC5 /* AlbertosCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 389F3EAA26E2AB0C00A1AFC5 /* AlbertosCore.framework */; };
 		389F3EAC26E2AB0C00A1AFC5 /* AlbertosCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 389F3EAA26E2AB0C00A1AFC5 /* AlbertosCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		38D3A86D26D42821009F4511 /* MenuItemDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D3A86C26D42821009F4511 /* MenuItemDetail.swift */; };
+		38D3A86D26D42821009F4511 /* MenuItemDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D3A86C26D42821009F4511 /* MenuItemDetailView.swift */; };
 		38D3A87026D4284C009F4511 /* MenuItemDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D3A86F26D4284B009F4511 /* MenuItemDetailViewModel.swift */; };
 		38D3A87326D4288C009F4511 /* MenuItemDetailViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D3A87226D4288C009F4511 /* MenuItemDetailViewModelTests.swift */; };
 		38D3A87626D429D6009F4511 /* OrderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D3A87526D429D6009F4511 /* OrderButton.swift */; };
@@ -132,7 +132,7 @@
 		386D7D3F26D5882500005318 /* PaymentProcessingProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentProcessingProxy.swift; sourceTree = "<group>"; };
 		386D7D4226D58E8500005318 /* AlertViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewModel.swift; sourceTree = "<group>"; };
 		389F3EAA26E2AB0C00A1AFC5 /* AlbertosCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AlbertosCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		38D3A86C26D42821009F4511 /* MenuItemDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemDetail.swift; sourceTree = "<group>"; };
+		38D3A86C26D42821009F4511 /* MenuItemDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemDetailView.swift; sourceTree = "<group>"; };
 		38D3A86F26D4284B009F4511 /* MenuItemDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemDetailViewModel.swift; sourceTree = "<group>"; };
 		38D3A87226D4288C009F4511 /* MenuItemDetailViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemDetailViewModelTests.swift; sourceTree = "<group>"; };
 		38D3A87526D429D6009F4511 /* OrderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderButton.swift; sourceTree = "<group>"; };
@@ -273,7 +273,7 @@
 		38D3A86B26D4280C009F4511 /* Menu Item Detail UI */ = {
 			isa = PBXGroup;
 			children = (
-				38D3A86C26D42821009F4511 /* MenuItemDetail.swift */,
+				38D3A86C26D42821009F4511 /* MenuItemDetailView.swift */,
 			);
 			path = "Menu Item Detail UI";
 			sourceTree = "<group>";
@@ -712,7 +712,7 @@
 				38D3A87926D42A06009F4511 /* OrderButtonViewModel.swift in Sources */,
 				38F135FA26D3076800E1C41C /* AlbertosApp.swift in Sources */,
 				38D3A88826D42B58009F4511 /* Color.swift in Sources */,
-				38D3A86D26D42821009F4511 /* MenuItemDetail.swift in Sources */,
+				38D3A86D26D42821009F4511 /* MenuItemDetailView.swift in Sources */,
 				386D7D3E26D57E3F00005318 /* HippoPaymentsProcessor+PaymentProcessing.swift in Sources */,
 				38FE9DAA26D3285700078BE0 /* MenuRow.swift in Sources */,
 				38D3A88326D42ABE009F4511 /* OrderDetailViewModel.swift in Sources */,

@@ -29,7 +29,7 @@ struct MenuListView: View {
         }
     }
 
-    func destination(for item: MenuItem) -> MenuItemDetail {
-        MenuItemDetail(viewModel: .init(item: item, orderController: orderController))
+    func destination(for item: MenuItem) -> MenuItemDetailView {
+        MenuItemDetailView(viewModel: .init(item: item, orderController: orderController))
     }
 }

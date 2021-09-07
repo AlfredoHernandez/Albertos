@@ -8,81 +8,62 @@ import XCTest
 
 class MenuItemDetailViewModelTests: XCTestCase {
     func test_nameIsItemName() {
-        XCTAssertEqual(
-            MenuItemDetailViewModel(item: .fixture(name: "a name"), orderController: OrderController()).name,
-            "a name"
-        )
+        let (sut, _) = makeSUT(item: .fixture(name: "a name"))
+
+        XCTAssertEqual(sut.name, "a name")
     }
 
     func test_whenItemIsSpicy_showsSpicyMessage() {
-        XCTAssertEqual(
-            MenuItemDetailViewModel(item: .fixture(spicy: true), orderController: OrderController()).spicy,
-            "Spicy"
-        )
+        let (sut, _) = makeSUT(item: .fixture(spicy: true))
+
+        XCTAssertEqual(sut.spicy, "Spicy")
     }
 
     func test_whenItemIsNotSpicy_doesNotShowSpicyMessage() {
-        XCTAssertNil(MenuItemDetailViewModel(item: .fixture(spicy: false), orderController: OrderController()).spicy)
+        let (sut, _) = makeSUT(item: .fixture(spicy: false))
+
+        XCTAssertNil(sut.spicy)
     }
 
     func test_price_isFormattedItemPrice() {
-        XCTAssertEqual(
-            MenuItemDetailViewModel(item: .fixture(price: 1.0), orderController: OrderController()).price,
-            "$1.00"
-        )
-        XCTAssertEqual(
-            MenuItemDetailViewModel(item: .fixture(price: 2.5), orderController: OrderController()).price,
-            "$2.50"
-        )
-        XCTAssertEqual(
-            MenuItemDetailViewModel(item: .fixture(price: 3.45), orderController: OrderController()).price,
-            "$3.45"
-        )
-        XCTAssertEqual(
-            MenuItemDetailViewModel(item: .fixture(price: 4.123), orderController: OrderController()).price,
-            "$4.12"
-        )
+        XCTAssertEqual(sut(item: .fixture(price: 1.0)).price, "$1.00")
+        XCTAssertEqual(sut(item: .fixture(price: 2.5)).price, "$2.50")
+        XCTAssertEqual(sut(item: .fixture(price: 3.45)).price, "$3.45")
+        XCTAssertEqual(sut(item: .fixture(price: 4.123)).price, "$4.12")
     }
 
-    func test_whenItemIsInOrder_buttonSaysRemove() {
-        let menuItem = MenuItem.fixture()
-        let orderController = OrderController()
-        orderController.addMenuItem(menuItem)
+    func test_numberOfItemsInOrder_excludesOtherItems() {
+        let item: MenuItem = .fixture(name: "an item")
+        let (sut, _) = makeSUT(item: item, order: [.fixture(name: "another item")])
 
-        let viewModel = MenuItemDetailViewModel(item: menuItem, orderController: orderController)
+        XCTAssertEqual(sut.numberOfItemsInOrder, "0 items in order")
 
-        let text = viewModel.addOrRemoveFromOrderButtonText
-        XCTAssertEqual(text, "Remove from order")
+        sut.addItem()
+        XCTAssertEqual(sut.numberOfItemsInOrder, "1 items in order")
+
+        sut.addItem()
+        XCTAssertEqual(sut.numberOfItemsInOrder, "2 items in order")
+
+        sut.removeItem()
+        XCTAssertEqual(sut.numberOfItemsInOrder, "1 items in order")
     }
 
-    func test_whenItemIsNotInOrder_buttonSaysAdd() {
-        let menuItem = MenuItem.fixture()
-        let orderController = OrderController()
+    // MARK: - Helpers
 
-        let viewModel = MenuItemDetailViewModel(item: menuItem, orderController: orderController)
-
-        let text = viewModel.addOrRemoveFromOrderButtonText
-        XCTAssertEqual(text, "Add to order")
+    private func makeSUT(
+        item: MenuItem = .fixture(),
+        order: [MenuItem] = [],
+        file: StaticString = #filePath,
+        line: UInt = #line
+    ) -> (MenuItemDetailViewModel, OrderController) {
+        let orderController = OrderController(order: .init(items: order))
+        let sut = MenuItemDetailViewModel(item: item, orderController: orderController)
+        trackForMemoryLeaks(orderController, file: file, line: line)
+        trackForMemoryLeaks(sut, file: file, line: line)
+        return (sut, orderController)
     }
 
-    func test_whenItemIsInOrder_buttonActionRemovesIt() {
-        let item = MenuItem.fixture()
-        let orderController = OrderController()
-        orderController.addMenuItem(item)
-
-        let viewModel = MenuItemDetailViewModel(item: item, orderController: orderController)
-        viewModel.addOrRemoveFromOrder()
-
-        XCTAssertFalse(orderController.order.items.contains { $0 == item })
-    }
-
-    func test_whenItemIsNotInOrder_buttonActionAddsIt() {
-        let item = MenuItem.fixture()
-        let orderController = OrderController()
-
-        let viewModel = MenuItemDetailViewModel(item: item, orderController: orderController)
-        viewModel.addOrRemoveFromOrder()
-
-        XCTAssertTrue(orderController.order.items.contains { $0 == item })
+    private func sut(item: MenuItem = .fixture()) -> MenuItemDetailViewModel {
+        makeSUT(item: item).0
     }
 }
