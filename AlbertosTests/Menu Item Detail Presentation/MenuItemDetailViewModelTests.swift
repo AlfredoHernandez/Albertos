@@ -19,10 +19,6 @@ class MenuItemDetailViewModelTests: XCTestCase {
         XCTAssertEqual(sut.spicy, "Spicy")
     }
 
-    func test_addToOrderText() {
-        XCTAssertEqual(sut().addToOrderText, "Add to order")
-    }
-
     func test_whenItemIsNotSpicy_doesNotShowSpicyMessage() {
         let (sut, _) = makeSUT(item: .fixture(spicy: false))
 
@@ -61,6 +57,21 @@ class MenuItemDetailViewModelTests: XCTestCase {
         sut.removeItem()
 
         XCTAssertEqual(sut.items.filter { $0.name == item.name }.count, 0)
+    }
+
+    func test_numberOfItemsInOrder_excludesOtherItems() {
+        let item: MenuItem = .fixture(name: "an item")
+        let (sut, _) = makeSUT(item: item, order: [.fixture(name: "another item")])
+        XCTAssertEqual(sut.items.count, 0)
+
+        sut.addItem()
+        XCTAssertEqual(sut.items.count, 1)
+
+        sut.addItem()
+        XCTAssertEqual(sut.items.count, 2)
+
+        sut.removeItem()
+        XCTAssertEqual(sut.items.count, 1)
     }
 
     // MARK: - Helpers

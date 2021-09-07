@@ -18,15 +18,17 @@ struct MenuItemDetailView: View {
                 }
             }
             Text(viewModel.price)
-            Stepper(
-                viewModel.addToOrderText,
-                onIncrement: {
-                    viewModel.addItem()
-                },
-                onDecrement: {
-                    viewModel.removeItem()
-                }
-            )
+            HStack {
+                Stepper(
+                    "\(viewModel.items.count) items in order",
+                    onIncrement: {
+                        viewModel.addItem()
+                    },
+                    onDecrement: {
+                        viewModel.removeItem()
+                    }
+                )
+            }
             Divider()
             Text("Description")
                 .bold()
