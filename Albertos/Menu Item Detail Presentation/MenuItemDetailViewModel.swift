@@ -7,14 +7,14 @@ import Combine
 import Foundation
 
 class MenuItemDetailViewModel: ObservableObject {
-    let item: MenuItem
+    private let item: MenuItem
     let name: String
     let spicy: String?
     let price: String
     let addToOrderText = "Add to order"
 
-    var items: [MenuItem] = []
     @Published private(set) var numberOfItemsInOrder = ""
+    @Published private var items: [MenuItem] = []
 
     private let orderController: OrderController
     private var cancellables = Set<AnyCancellable>()
@@ -26,19 +26,24 @@ class MenuItemDetailViewModel: ObservableObject {
         spicy = item.spicy ? "Spicy" : .none
         price = "$\(String(format: "%.2f", item.price))"
 
-        numberOfItemsInOrder = String(format: "%d items in order", items.count)
-        items = orderController.items.filter { $0 == item }
+        syncItems(from: orderController)
+
+        $items.sink { [weak self] in
+            self?.numberOfItemsInOrder = String(format: "%d items in order", $0.count)
+        }.store(in: &cancellables)
     }
 
     func addItem() {
         orderController.addMenuItem(item)
-        items = orderController.items.filter { $0 == item }
-        numberOfItemsInOrder = String(format: "%d items in order", items.count)
+        syncItems(from: orderController)
     }
 
     func removeItem() {
         orderController.removeMenuItem(item)
+        syncItems(from: orderController)
+    }
+
+    private func syncItems(from orderController: OrderController) {
         items = orderController.items.filter { $0 == item }
-        numberOfItemsInOrder = String(format: "%d items in order", items.count)
     }
 }

@@ -20,7 +20,7 @@ struct MenuItemDetailView: View {
             Text(viewModel.price)
             HStack {
                 Stepper(
-                    "\(viewModel.items.count) items in order",
+                    viewModel.numberOfItemsInOrder,
                     onIncrement: {
                         viewModel.addItem()
                     },

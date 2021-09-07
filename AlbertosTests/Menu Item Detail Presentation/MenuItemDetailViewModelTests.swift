@@ -32,50 +32,19 @@ class MenuItemDetailViewModelTests: XCTestCase {
         XCTAssertEqual(sut(item: .fixture(price: 4.123)).price, "$4.12")
     }
 
-    func test_whenItemsAreEmptyAndAddItem_addItemToOrder() {
-        let item: MenuItem = .fixture(name: "an item")
-        let (sut, _) = makeSUT(item: item)
-
-        sut.addItem()
-
-        XCTAssertEqual(sut.items.filter { $0.name == item.name }.count, 1)
-    }
-
-    func test_whenItemIsInOrder_addItemAddsItem() {
-        let item: MenuItem = .fixture(name: "an item")
-        let (sut, _) = makeSUT(item: item, order: [item])
-
-        sut.addItem()
-
-        XCTAssertEqual(sut.items.filter { $0.name == item.name }.count, 2)
-    }
-
-    func test_whenItemIsInOrder_removeItemRemovesIt() {
-        let item: MenuItem = .fixture()
-        let (sut, _) = makeSUT(order: [.fixture()])
-
-        sut.removeItem()
-
-        XCTAssertEqual(sut.items.filter { $0.name == item.name }.count, 0)
-    }
-
     func test_numberOfItemsInOrder_excludesOtherItems() {
         let item: MenuItem = .fixture(name: "an item")
         let (sut, _) = makeSUT(item: item, order: [.fixture(name: "another item")])
 
         XCTAssertEqual(sut.numberOfItemsInOrder, "0 items in order")
-        XCTAssertEqual(sut.items.count, 0)
 
         sut.addItem()
-        XCTAssertEqual(sut.items.count, 1)
         XCTAssertEqual(sut.numberOfItemsInOrder, "1 items in order")
 
         sut.addItem()
-        XCTAssertEqual(sut.items.count, 2)
         XCTAssertEqual(sut.numberOfItemsInOrder, "2 items in order")
 
         sut.removeItem()
-        XCTAssertEqual(sut.items.count, 1)
         XCTAssertEqual(sut.numberOfItemsInOrder, "1 items in order")
     }
 
