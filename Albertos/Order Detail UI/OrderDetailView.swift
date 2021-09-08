@@ -20,7 +20,7 @@ struct OrderDetailView: View {
                 VStack {
                     Image(systemName: "bag")
                         .font(.system(size: 180))
-                        .foregroundColor(.tomato)
+                        .foregroundColor(.accentColor)
                     Text(viewModel.emptyMenuFallbackText)
                         .font(.body)
                         .multilineTextAlignment(.center)
@@ -50,7 +50,7 @@ struct OrderDetailView: View {
                             .font(Font.callout.bold())
                             .padding(12)
                             .foregroundColor(.white)
-                            .background(Color.crimson)
+                            .background(Color.accentColor)
                             .cornerRadius(10.0)
                     }
                 }
@@ -68,9 +68,9 @@ struct OrderDetailView: View {
     }
 }
 
-//import AlbertosCore
+// import AlbertosCore
 //
-//struct OrderDetailView_Preview: PreviewProvider {
+// struct OrderDetailView_Preview: PreviewProvider {
 //    static var previews: some View {
 //        OrderDetailView(viewModel: .init(
 //            // orderController: OrderController(order: Order(items: [MenuItem(category: "category", name: "This is a new dish", spicy: true, price: 10)])),
@@ -79,4 +79,4 @@ struct OrderDetailView: View {
 //            onAlertDismiss: {}
 //        ))
 //    }
-//}
+// }

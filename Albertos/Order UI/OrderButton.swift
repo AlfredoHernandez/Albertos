@@ -21,7 +21,7 @@ struct OrderButton: View {
                 .font(Font.callout.bold())
                 .padding(12)
                 .foregroundColor(.white)
-                .background(Color.crimson)
+                .background(Color.accentColor)
                 .cornerRadius(10.0)
         }
         .shadow(radius: 8)
