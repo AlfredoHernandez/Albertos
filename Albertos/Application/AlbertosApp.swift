@@ -31,7 +31,13 @@ struct AlbertosApp: App {
                     .navigationTitle("Alberto's 🇮🇹")
                 }
                 OrderButton(
-                    orderController: orderController,
+                    orderDetailView: { onComplete in
+                        OrderDetailView(viewModel: .init(
+                            orderHandler: orderController,
+                            paymentProcessor: paymentProcessor,
+                            onAlertDismiss: onComplete
+                        ))
+                    },
                     viewModel: .init(orderController: orderController)
                 ).padding(16)
             }

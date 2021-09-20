@@ -6,7 +6,7 @@ import AlbertosCore
 import SwiftUI
 
 struct OrderButton: View {
-    let orderController: OrderHandler
+    let orderDetailView: (_ onComplete: @escaping () -> Void) -> OrderDetailView
     @EnvironmentObject var paymentProcessor: PaymentProcessingProxy
     @ObservedObject var viewModel: OrderButtonViewModel
 
@@ -26,11 +26,9 @@ struct OrderButton: View {
         }
         .shadow(radius: 8)
         .sheet(isPresented: $showingDetail) {
-            OrderDetailView(viewModel: .init(
-                orderHandler: orderController,
-                paymentProcessor: paymentProcessor,
-                onAlertDismiss: { self.showingDetail = false }
-            ))
+            orderDetailView {
+                self.showingDetail = false
+            }
         }
     }
 }
