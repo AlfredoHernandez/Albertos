@@ -6,9 +6,9 @@ import AlbertosCore
 import SwiftUI
 
 struct OrderButton: View {
-    @EnvironmentObject var orderController: OrderController
+    let orderDetailView: (_ onComplete: @escaping () -> Void) -> OrderDetailView
     @EnvironmentObject var paymentProcessor: PaymentProcessingProxy
-    let viewModel: OrderButtonViewModel
+    @ObservedObject var viewModel: OrderButtonViewModel
 
     @State private(set) var showingDetail: Bool = false
 
@@ -17,18 +17,18 @@ struct OrderButton: View {
             self.showingDetail.toggle()
         } label: {
             Text(viewModel.text)
+                .frame(maxWidth: .infinity)
                 .font(Font.callout.bold())
                 .padding(12)
                 .foregroundColor(.white)
-                .background(Color.crimson)
+                .background(Color.accentColor)
                 .cornerRadius(10.0)
         }
+        .shadow(radius: 8)
         .sheet(isPresented: $showingDetail) {
-            OrderDetailView(viewModel: .init(
-                orderHandler: orderController,
-                paymentProcessor: paymentProcessor,
-                onAlertDismiss: { self.showingDetail = false }
-            ))
+            orderDetailView {
+                self.showingDetail = false
+            }
         }
     }
 }

@@ -7,10 +7,10 @@ import Combine
 import Foundation
 import SwiftUI
 
-class OrderButtonViewModel {
+class OrderButtonViewModel: ObservableObject {
     @Published var text = "Your Order"
-    let orderController: OrderController
-    var cancellables = Set<AnyCancellable>()
+    private let orderController: OrderController
+    private var cancellables = Set<AnyCancellable>()
 
     init(orderController: OrderController) {
         self.orderController = orderController

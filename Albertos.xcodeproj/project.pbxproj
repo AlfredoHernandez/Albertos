@@ -44,7 +44,6 @@
 		38D3A87F26D42A7C009F4511 /* OrderDetailViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D3A87E26D42A7C009F4511 /* OrderDetailViewModelTests.swift */; };
 		38D3A88326D42ABE009F4511 /* OrderDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D3A88226D42ABE009F4511 /* OrderDetailViewModel.swift */; };
 		38D3A88526D42B23009F4511 /* OrderDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D3A88426D42B23009F4511 /* OrderDetailView.swift */; };
-		38D3A88826D42B58009F4511 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D3A88726D42B58009F4511 /* Color.swift */; };
 		38F135FA26D3076800E1C41C /* AlbertosApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F135F926D3076800E1C41C /* AlbertosApp.swift */; };
 		38F135FE26D3076900E1C41C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 38F135FD26D3076900E1C41C /* Assets.xcassets */; };
 		38F1360126D3076900E1C41C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 38F1360026D3076900E1C41C /* Preview Assets.xcassets */; };
@@ -141,7 +140,6 @@
 		38D3A87E26D42A7C009F4511 /* OrderDetailViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailViewModelTests.swift; sourceTree = "<group>"; };
 		38D3A88226D42ABE009F4511 /* OrderDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailViewModel.swift; sourceTree = "<group>"; };
 		38D3A88426D42B23009F4511 /* OrderDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailView.swift; sourceTree = "<group>"; };
-		38D3A88726D42B58009F4511 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		38F135F626D3076800E1C41C /* Albertos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Albertos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38F135F926D3076800E1C41C /* AlbertosApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbertosApp.swift; sourceTree = "<group>"; };
 		38F135FD26D3076900E1C41C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -346,7 +344,6 @@
 			isa = PBXGroup;
 			children = (
 				38F135F926D3076800E1C41C /* AlbertosApp.swift */,
-				38D3A88726D42B58009F4511 /* Color.swift */,
 				386D7D4226D58E8500005318 /* AlertViewModel.swift */,
 			);
 			path = Application;
@@ -711,7 +708,6 @@
 				38FE9DAF26D329B400078BE0 /* MenuRowViewModel.swift in Sources */,
 				38D3A87926D42A06009F4511 /* OrderButtonViewModel.swift in Sources */,
 				38F135FA26D3076800E1C41C /* AlbertosApp.swift in Sources */,
-				38D3A88826D42B58009F4511 /* Color.swift in Sources */,
 				38D3A86D26D42821009F4511 /* MenuItemDetailView.swift in Sources */,
 				386D7D3E26D57E3F00005318 /* HippoPaymentsProcessor+PaymentProcessing.swift in Sources */,
 				38FE9DAA26D3285700078BE0 /* MenuRow.swift in Sources */,
